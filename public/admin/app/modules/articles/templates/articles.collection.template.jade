@@ -1,0 +1,92 @@
+header.page-header
+	h1 Публикации
+section.filters
+section
+	table.table
+		thead
+			tr
+				th #
+				th(ng-repeat='fieldname in articles.meta.fieldnames' ng-bind='fieldname')
+		tbody
+			tr(
+				context-menu
+				data-target='menu{{$index}}'
+				ng-class='{\'active\': selected === $index}'
+				ng-click='toggle($index)'
+				ng-dblclick='read($index)'
+				ng-repeat='report in articles'
+			)
+				th(ng-bind='$index + 1')
+				td(ng-repeat='field in articles.meta.fields', ng-bind='report[field]')
+	section(ng-repeat='report in articles')
+		.dropdown.position-fixed(id='menu{{$index}}')
+			ul.dropdown-menu
+				li
+					a.pointer(ng-click='read($index)') Редактировать
+				li
+					a.pointer(ng-click='delete($index)') Удалить
+footer
+	.btn-group(dropdown)
+		button.btn.btn-default(ng-click='readSelected()' ng-disabled='selected == null') Редактировать
+		button.btn.btn-default(ng-click='deleteSelected()' ng-disabled='selected == null') Удалить
+		button.btn.btn-default(ng-click='create()') Создать
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//- 	button.btn.btn-default.dropdown-toggle Кол-во строк &nbsp
+	//- 		span.caret
+	//- 	ul.dropdown-menu.dropdown-menu-right(ng-init='limits = [10, 20, 50, 100]')
+	//- 		li(ng-repeat='limit in limits')
+	//- 			a(ng-click='changeLimit(limit)') {{limit}}
+	//- pagination.pagination.pull-right(
+	//- 	boundary-links='true'
+	//- 	items-per-page='limit'
+	//- 	max-size='max'
+	//- 	ng-change='changePage()'
+	//- 	ng-model='current'
+	//- 	num-pages='pages'
+	//- 	rotate='false'
+	//- 	total-items='total'
+	//- )
+
+
+
+
+
+//- .container-fluid
+//- 	br
+//- 	.panel.panel-default.ui-ribbon-container
+//- 		.panel-heading
+//- 			span.fa.fa-bars &nbsp;Ribbon
+//- 		.panel-body
+//- 			table.table.table-bordered.table-striped.table-hover
+//- 				thead
+//- 					tr
+//- 						td #
+//- 						td(ng-repeat='field in fields') {{field.ru}}
+//- 				tbody
+//- 					tr(ng-repeat='document in articles', ng-dblclick='openDocument($index)')
+//- 						td {{$index + 1}}
+//- 						td(ng-repeat='field in fields') {{document[field.db]}}
+//- 			a(ui-sref='report.create', href)
+//- 				button.btn.btn-default Создать
+
+
+
+
+
+

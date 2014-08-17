@@ -1,0 +1,319 @@
+header.page-header
+	h1
+		a(ui-sref='products.collection') Продукты
+		small
+			|  / 
+			span(ng-bind='product.name')
+section
+	ul.nav.nav-tabs
+		li(ng-class='{\'active\': tab === 1}')
+			a(ng-click='tab = 1') Данные
+		li(ng-class='{\'active\': tab === 2}')
+			a(ng-click='tab = 2') Картинки
+		li(ng-class='{\'active\': tab === 3}')
+			a(ng-click='tab = 3') Файлы
+	.tab-content(ng-init='tab = 1')
+		.tab-pane(ng-class='{\'active\': tab === 1}')
+			br
+			form.form-horizontal
+				.form-group
+					label.control-label.col-md-2 Наименование
+					.col-md-10
+						input.form-control(ng-model='product.name')
+
+				.form-group
+					label.control-label.col-md-2 Краткое описание
+					.col-md-10
+						input.form-control(ng-model='product.info')
+				.form-group
+					label.control-label.col-md-2 Общие сведения
+					.col-md-10
+						text-angular(ng-model='product.overview')
+				.form-group
+					label.control-label.col-md-2 Стоимость
+					.col-md-10
+						input.form-control(ng-model='product.cost', type='number')
+				.form-group
+					label.control-label.col-md-2 Валюта
+					.col-md-10
+						select.form-control(ng-model='product.currency')
+							option
+							option(value='RU') Рубль
+							option(value='US') Доллар
+							option(value='EU') Эвро
+							option(value='YE') Условная единица
+				.form-group(ng-if='product.currency === \'YE\'')
+					label.control-label.col-md-2 Значение условной единицы
+					.col-md-10
+						input.form-control(ng-model='product.yevalue', type='number')
+				.form-group
+					label.control-label.col-md-2 Скидка
+					.col-md-10
+						select.form-control(ng-model='product.discount')
+							option
+							option(value='5') 5%
+							option(value='10') 10%
+							option(value='15') 15%
+							option(value='25') 20%
+				.form-group
+					label.control-label.col-md-2 Позиция
+					.col-md-10
+						input.form-control(ng-model='product.index', type='number')
+				.form-group
+					label.control-label.col-md-2 Тип продукта
+					.col-md-10
+						select.form-control(ng-model='product.type')
+							option
+							option(value='loudspeackers') Сабвуферы
+							option(value='speackers') Акустические системы
+				.form-group
+					label.control-label.col-md-2 Технические характеристики
+					.col-md-10
+						.animate-if(ng-if='product.type')
+							ng-include(src='\'./app/modules/products/templates/products.techs.\' + product.type + \'.template.html\'')
+						.animate-if(ng-if='!product.type') Выберите тип продукта
+				.form-group
+					label.control-label.col-md-2 Заголовок описания
+					.col-md-10
+						input.form-control(ng-model='product.description.title')
+				.form-group
+					label.control-label.col-md-2 Короткая версия описания
+					.col-md-10
+						text-angular(ng-model='product.description.short')
+				.form-group
+					label.control-label.col-md-2 Полная версия описания
+					.col-md-10
+						text-angular(ng-model='product.description.full')
+				.form-group
+					label.control-label.col-md-2 Сопутствующие товары
+					.col-md-10
+						tags-input(ng-model='product.related', display-property='name')
+							auto-complete(source='loadProductTags($query)')
+				.form-group
+					.col-md-offset-2.col-md-10
+						button.btn.btn-default(ng-click='update()') Сохранить
+		.tab-pane(ng-class='{\'active\': tab === 2}')
+			br
+			form.form-horizontal
+				.form-group
+					label.control-label.col-md-2 Главная картинка
+					.col-md-10
+						picture-uploader(ng-model='product.pictures.main', picture-uploader-multiple='false', picture-uploader-endpoint='{{\'/products/\' + id + \'/main\'}}')
+				.form-group
+					label.control-label.col-md-2 Остальные картинки
+					.col-md-10
+						picture-uploader(ng-model='product.pictures.other', picture-uploader-multiple='true', picture-uploader-endpoint='{{\'/products/\' + id + \'/other\'}}')
+				.form-group
+					.col-md-offset-2.col-md-10
+						button.btn.btn-default(ng-click='update()') Сохранить
+		.tab-pane(ng-class='{\'active\': tab === 3}')
+			br
+			button.btn.btn-default(ng-click='update()') Сохранить
+
+
+	//- <!-- Nav tabs -->
+	//- <ul class="nav nav-tabs" role="tablist">
+	//-   <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+	//-   <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+	//-   <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+	//-   <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+	//- </ul>
+
+	//- <!-- Tab panes -->
+	//- <div class="tab-content">
+	//-   <div class="tab-pane active" id="home">...</div>
+	//-   <div class="tab-pane" id="profile">...</div>
+	//-   <div class="tab-pane" id="messages">...</div>
+	//-   <div class="tab-pane" id="settings">...</div>
+	//- </div>
+	//- form.form-horizontal
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Наименование
+	//- 		.col-md-10
+	//- 			input.form-control(ng-model='product.name')
+
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Краткое описание
+	//- 		.col-md-10
+	//- 			input.form-control(ng-model='product.info')
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Общие сведения
+	//- 		.col-md-10
+	//- 			text-angular(ng-model='product.overview')
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Стоимость
+	//- 		.col-md-10
+	//- 			input.form-control(ng-model='product.cost', type='number')
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Валюта
+	//- 		.col-md-10
+	//- 			select.form-control(ng-model='product.currency')
+	//- 				option
+	//- 				option(value='RU') Рубль
+	//- 				option(value='US') Доллар
+	//- 				option(value='EU') Эвро
+	//- 				option(value='YE') Условная единица
+	//- 	.form-group(ng-if='product.currency === \'YE\'')
+	//- 		label.control-label.col-md-2 Значение условной единицы
+	//- 		.col-md-10
+	//- 			input.form-control(ng-model='product.yevalue', type='number')
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Скидка
+	//- 		.col-md-10
+	//- 			select.form-control(ng-model='product.discount')
+	//- 				option
+	//- 				option(value='5') 5%
+	//- 				option(value='10') 10%
+	//- 				option(value='15') 15%
+	//- 				option(value='25') 20%
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Позиция
+	//- 		.col-md-10
+	//- 			input.form-control(ng-model='product.index', type='number')
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Тип продукта
+	//- 		.col-md-10
+	//- 			select.form-control(ng-model='product.type')
+	//- 				option
+	//- 				option(value='loudspeackers') Сабвуферы
+	//- 				option(value='speackers') Акустические системы
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Технические характеристики
+	//- 		.col-md-10
+	//- 			.animate-if(ng-if='product.type')
+	//- 				ng-include(src='\'./app/modules/products/templates/products.techs.\' + product.type + \'.template.html\'')
+	//- 			.animate-if(ng-if='!product.type') Выберите тип продукта
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Заголовок описания
+	//- 		.col-md-10
+	//- 			input.form-control(ng-model='product.description.title')
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Короткая версия описания
+	//- 		.col-md-10
+	//- 			text-angular(ng-model='product.description.short')
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Полная версия описания
+	//- 		.col-md-10
+	//- 			text-angular(ng-model='product.description.full')
+	//- 	.form-group
+	//- 		label.control-label.col-md-2 Сопутствующие товары
+	//- 		.col-md-10
+	//- 			tags-input(ng-model='product.related', display-property='name')
+	//- 				auto-complete(source='loadProductTags($query)')
+
+
+
+
+
+
+
+
+//- .container-fluid
+//- 	br
+//- 	.panel.panel-default.ui-ribbon-container
+//- 		.panel-heading
+//- 			span.fa.fa-bars &nbsp;Продукты
+//- 		.panel-body
+//- 			form.form-horizontal
+//- 				.form-group
+//- 					label.control-label.col-md-2 Наименование
+//- 					.col-md-10
+//- 						input.form-control(ng-model='product.name')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Краткое описание
+//- 					.col-md-10
+//- 						input.form-control(ng-model='product.info')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Общие сведения
+//- 					.col-md-10
+//- 						text-angular(ng-model='product.overview')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Стоимость
+//- 					.col-md-10
+//- 						input.form-control(ng-model='product.cost', type='number')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Валюта
+//- 					.col-md-10
+//- 						select.form-control(ng-model='product.currency')
+//- 							option
+//- 							option(value='RU') Рубль
+//- 							option(value='US') Доллар
+//- 							option(value='EU') Эвро
+//- 							option(value='YE') Условная единица
+//- 				.form-group(ng-if='product.currency === \'YE\'')
+//- 					label.control-label.col-md-2 Значение условной единицы
+//- 					.col-md-10
+//- 						input.form-control(ng-model='product.yevalue', type='number')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Скидка
+//- 					.col-md-10
+//- 						select.form-control(ng-model='product.discount')
+//- 							option
+//- 							option(value='5') 5%
+//- 							option(value='10') 10%
+//- 							option(value='15') 15%
+//- 							option(value='25') 20%
+//- 				.form-group
+//- 					label.control-label.col-md-2 Позиция
+//- 					.col-md-10
+//- 						input.form-control(ng-model='product.index', type='number')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Тип продукта
+//- 					.col-md-10
+//- 						select.form-control(ng-model='product.type')
+//- 							option
+//- 							option(value='loudspeackers') Сабвуферы
+//- 							option(value='speackers') Акустические системы
+//- 				.form-group
+//- 					label.control-label.col-md-2 Технические характеристики
+//- 					.col-md-10
+//- 						.animate-if(ng-if='product.type')
+//- 							ng-include(src='\'./app/modules/product/templates/product.techs.\' + product.type + \'.template.html\'')
+//- 						.animate-if(ng-if='!product.type') Выберите тип продукта
+//- 				.form-group
+//- 					label.control-label.col-md-2 Заголовок описания
+//- 					.col-md-10
+//- 						input.form-control(ng-model='product.description.title')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Короткая версия описания
+//- 					.col-md-10
+//- 						text-angular(ng-model='product.description.short')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Полная версия описания
+//- 					.col-md-10
+//- 						text-angular(ng-model='product.description.full')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Сопутствующие товары
+//- 					.col-md-10
+//- 						tags-input(ng-model='product.related', display-property='name')
+//- 							auto-complete(source='loadProductTags($query)')
+
+
+
+
+
+
+
+
+//- 				.form-group
+//- 					label.control-label.col-md-2 Главная картинка
+//- 					.col-md-10
+//- 						picture-uploader(ng-model='product.pictures.main', picture-uploader-multiple='false', picture-uploader-endpoint='{{\'/products/\' + id + \'/pictures\'}}')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Остальные картинки
+//- 					.col-md-10
+//- 						picture-uploader(ng-model='product.pictures.other', picture-uploader-multiple='true', picture-uploader-endpoint='{{\'/products/\' + id + \'/pictures\'}}')
+
+
+
+
+
+
+
+
+
+
+//- 				.form-group
+//- 					.btn-group.col-md-10.col-md-offset-2
+//- 						button.btn.btn-default(ng-click='saveDocument()') Сохранить
+

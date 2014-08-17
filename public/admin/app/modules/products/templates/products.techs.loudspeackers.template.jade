@@ -1,0 +1,8 @@
+.panel.panel-default
+	.panel-heading Технические характеристики сабвуфера
+	.panel-body(ng-controller='ProductTechsLoudspeackersController')
+		form.form-horizontal
+			.form-group(ng-repeat='tech in product.techs')
+				label.control-label.col-md-3 {{tech[0]}}
+				.col-md-9
+					input.form-control(ng-model='tech[1]')

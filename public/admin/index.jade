@@ -1,0 +1,29 @@
+doctype html
+html
+	head
+		title Admin
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+		link(rel='stylesheet', type='text/css', href='./bower_components/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='./bower_components/font-awesome/css/font-awesome.min.css')
+		link(rel='stylesheet', type='text/css', href='./bower_components/ng-tags-input/ng-tags-input.min.css')
+		link(rel='stylesheet', type='text/css', href='./bower_components/angular-ui-tree/dist/angular-ui-tree.min.css')
+		link(rel='stylesheet', type='text/css', href='./index.css')
+		//- link(rel='stylesheet', type='text/css', href='./app/modules/headbar/templates/headbar.template.css')
+		//- link(rel='stylesheet', type='text/css', href='./app/modules/signin/templates/signin.template.css')
+		//- link(rel='stylesheet', type='text/css', href='./app/modules/menu/templates/menu.template.css')
+		link(rel='stylesheet', type='text/css', href='./app/modules/products/templates/products.css')
+	body
+		.headbar-container(ng-include='\'./app/modules/headbar/templates/headbar.template.html\'')
+		.container
+			.row
+				.col-md-12.view-container(ui-view)
+					
+			
+		//- .signin-container(ng-include='\'./app/modules/signin/templates/signin.template.html\'')
+		//- .app-container
+		//- 	.headbar-container(ng-include='\'./app/modules/headbar/templates/headbar.template.html\'')
+		//- 	.menu-view-sidebar-container
+		//- 		.menu-container(ng-include='\'./app/modules/menu/templates/menu.template.html\'')
+		//- 		.view-container(ui-view)
+		//- 		.sidebar-container sidebar
+		script(type='text/javascript', src='./bower_components/requirejs/require.js', data-main='./app/require.config')

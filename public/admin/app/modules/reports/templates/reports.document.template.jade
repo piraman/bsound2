@@ -1,0 +1,133 @@
+header.page-header
+	h1
+		a(ui-sref='reports.collection') Новости
+		small
+			|  / 
+			span(ng-bind='report.title')
+section
+	form.form-horizontal
+		.form-group
+			label.control-label.col-md-2 Заголовок
+			.col-md-10
+				input.form-control(ng-model='report.title')
+		.form-group
+			label.control-label.col-md-2 Содержание
+			.col-md-10
+				text-angular(ng-model='report.text')
+		.form-group
+			.col-md-offset-2.col-md-10
+				button.btn.btn-default(ng-click='update()') Сохранить
+
+
+
+
+
+//- .container-fluid
+//- 	br
+//- 	.panel.panel-default.ui-ribbon-container
+//- 		.panel-heading
+//- 			span.fa.fa-bars &nbsp;Продукты
+//- 		.panel-body
+//- 			form.form-horizontal
+//- 				.form-group
+//- 					label.control-label.col-md-2 Наименование
+//- 					.col-md-10
+//- 						input.form-control(ng-model='report.name')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Краткое описание
+//- 					.col-md-10
+//- 						input.form-control(ng-model='report.info')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Общие сведения
+//- 					.col-md-10
+//- 						text-angular(ng-model='report.overview')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Стоимость
+//- 					.col-md-10
+//- 						input.form-control(ng-model='report.cost', type='number')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Валюта
+//- 					.col-md-10
+//- 						select.form-control(ng-model='report.currency')
+//- 							option
+//- 							option(value='RU') Рубль
+//- 							option(value='US') Доллар
+//- 							option(value='EU') Эвро
+//- 							option(value='YE') Условная единица
+//- 				.form-group(ng-if='report.currency === \'YE\'')
+//- 					label.control-label.col-md-2 Значение условной единицы
+//- 					.col-md-10
+//- 						input.form-control(ng-model='report.yevalue', type='number')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Скидка
+//- 					.col-md-10
+//- 						select.form-control(ng-model='report.discount')
+//- 							option
+//- 							option(value='5') 5%
+//- 							option(value='10') 10%
+//- 							option(value='15') 15%
+//- 							option(value='25') 20%
+//- 				.form-group
+//- 					label.control-label.col-md-2 Позиция
+//- 					.col-md-10
+//- 						input.form-control(ng-model='report.index', type='number')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Тип продукта
+//- 					.col-md-10
+//- 						select.form-control(ng-model='report.type')
+//- 							option
+//- 							option(value='loudspeackers') Сабвуферы
+//- 							option(value='speackers') Акустические системы
+//- 				.form-group
+//- 					label.control-label.col-md-2 Технические характеристики
+//- 					.col-md-10
+//- 						.animate-if(ng-if='report.type')
+//- 							ng-include(src='\'./app/modules/report/templates/report.techs.\' + report.type + \'.template.html\'')
+//- 						.animate-if(ng-if='!report.type') Выберите тип продукта
+//- 				.form-group
+//- 					label.control-label.col-md-2 Заголовок описания
+//- 					.col-md-10
+//- 						input.form-control(ng-model='report.description.title')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Короткая версия описания
+//- 					.col-md-10
+//- 						text-angular(ng-model='report.description.short')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Полная версия описания
+//- 					.col-md-10
+//- 						text-angular(ng-model='report.description.full')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Сопутствующие товары
+//- 					.col-md-10
+//- 						tags-input(ng-model='report.related', display-property='name')
+//- 							auto-complete(source='loadProductTags($query)')
+
+
+
+
+
+
+
+
+//- 				.form-group
+//- 					label.control-label.col-md-2 Главная картинка
+//- 					.col-md-10
+//- 						picture-uploader(ng-model='report.pictures.main', picture-uploader-multiple='false', picture-uploader-endpoint='{{\'/reports/\' + id + \'/pictures\'}}')
+//- 				.form-group
+//- 					label.control-label.col-md-2 Остальные картинки
+//- 					.col-md-10
+//- 						picture-uploader(ng-model='report.pictures.other', picture-uploader-multiple='true', picture-uploader-endpoint='{{\'/reports/\' + id + \'/pictures\'}}')
+
+
+
+
+
+
+
+
+
+
+//- 				.form-group
+//- 					.btn-group.col-md-10.col-md-offset-2
+//- 						button.btn.btn-default(ng-click='saveDocument()') Сохранить
+

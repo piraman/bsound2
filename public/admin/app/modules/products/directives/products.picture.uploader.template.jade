@@ -1,0 +1,91 @@
+.picture-uploader(ng-switch='multiple')
+	.well(ng-switch-when='true')
+		.panel-default.panel(ng-show='model.length > 0')
+			.panel-heading Загруженные картинки
+			.panel-body
+				.row
+					.col-md-4(ng-repeat='picture in model track by $index')
+						.thumbnail
+							img(ng-src='{{base}}/pictures/{{picture}}')
+							.caption
+								p {{picture}}
+								.btn-group.btn-group-justified
+									.btn-group
+										button.btn.btn-default(ng-click='delete($index)') Удалить
+		.panel-default.panel(ng-show='selected.length > 0')
+			.panel-heading Выбранные картинки
+			.panel-body
+				.row
+					.col-md-4(ng-repeat='picture in selected track by $index')
+						.thumbnail
+							img(ng-src='{{picture.url}}')
+							.caption
+								p {{picture.name}}
+								.btn-group.btn-group-justified
+									.btn-group
+										button.btn.btn-default(ng-click='upload($index)') Загрузить
+									.btn-group
+										button.btn.btn-default(ng-click='cancel($index)') Отменить
+		span.btn.btn-default.btn-file Выбрать картинку
+			input(type="file", name='other', multiple, onchange='angular.element(this).scope().fileChange(this)')
+	.well(ng-switch-when='false')
+		.panel-default.panel(ng-show='model || selected')
+			.panel-heading Картинка
+			.panel-body
+				.row
+					.col-md-4(ng-if='!model')
+						.thumbnail
+							img(ng-src='{{selected.url}}')
+							.caption
+								p {{selected.name}}
+								.btn-group.btn-group-justified
+									.btn-group
+										button.btn.btn-default(ng-click='upload($index)') Загрузить
+									.btn-group
+										button.btn.btn-default(ng-click='cancel($index)') Отменить
+					.col-md-4(ng-if='model')
+						.thumbnail
+							img(ng-src='{{base}}/pictures/{{model}}')
+							.caption
+								p {{model}}
+								.btn-group.btn-group-justified
+									.btn-group
+										button.btn.btn-default(ng-click='delete($index)') Удалить
+		span.btn.btn-default.btn-file(ng-show='model == null && selected == null') Выбрать картинку
+			input(type="file", name='main', onchange='angular.element(this).scope().fileChange(this)')
+
+
+
+
+
+		//- .well
+		//- 	.row
+		//- 		.col-md-2
+		//- 			.thumbnail
+		//- 				img.img-rounded.picture(ng-src="{{image.url}}")
+		//- 		.col-md-7
+		//- 			.panel.panel-default
+		//- 				table.table.table-bordered
+		//- 					thead
+		//- 						th Название картинки
+		//- 						th Вес картинки
+		//- 						th Тип картинки
+		//- 					tbody
+		//- 						tr
+		//- 							td {{image.name}}
+		//- 							td {{image.size}}
+		//- 							td {{image.type}}
+		//- 		.col-md-3
+		//- 			.btn-group-vertical.pull-right.full-width
+		//- 				button.btn.btn-default(ng-click='uploadPictureToServer($index)', ng-show='uploadPictureButtonDisplayCondition') Загрузить на сервер
+		//- 				button.btn.btn-default(ng-click='cancelPictureFromList($index)', ng-show='cancelPictureButtonDisplayCondition') Удалить из списка
+		//- 				button.btn.btn-default(ng-click='deletePictureFromServer($index)', ng-show='deletePictureButtonDisplayCondition') Удалить с сервера
+
+//- <span ng-switch on="editMode">
+//-   <h1 ng-switch-when="true" contenteditable=true>{{content.title}}</h1>
+//-   <h1 ng-switch-default>{{content.title}}</h1>
+//- </span>
+
+//- progressbar.progress-striped.active(value="50", type="success")
+
+//- input(type="file", ng-attr-multiple='{{pictureUploaderIsMultiple}}', onchange='angular.element(this).scope().inputFileChangeEventHandler(this)')

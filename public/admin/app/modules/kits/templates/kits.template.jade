@@ -1,0 +1,97 @@
+script(type='text/ng-template' id='kits.html')
+	div(ui-tree-handle)
+		a.btn.btn-success.btn-xs(data-nodrag ng-click='toggle(this)')
+			span.fa(ng-class='{\'fa-chevron-up\': collapsed, \'fa-chevron-down\': !collapsed}')
+		span(ng-bind='kit.title')
+		a.pull-right.btn.btn-danger.btn-xs(data-nodrag ng-click='remove(this)')
+			span.fa.fa-times
+		a.pull-right.btn.btn-primary.btn-xs(data-nodrag ng-click='addsub(this)', style='margin-right: 8px;')
+			span.fa.fa-plus
+		a.pull-right.btn.btn-warning.btn-xs(data-nodrag ng-click='products(this)')
+			span.fa.fa-chevron-right
+		a.pull-right.btn.btn-info.btn-xs(data-nodrag ng-click='edit(this)')
+			span.fa.fa-pencil
+	ol(ui-tree-nodes='options' ng-model='kit.kits' ng-class='{hidden: collapsed}')
+		li(ng-repeat='kit in kit.kits' ui-tree-node ng-include=' \'kits.html\' ')
+
+
+.kits-container
+	header.page-header
+		h1 Комплекты
+	section.row
+		.col-md-8
+			div(ui-tree='options' data-empty-place-holder-enabled='false')
+				ol(ui-tree-nodes ng-model='kits.tree')
+					li(ng-repeat='kit in kits.tree' ui-tree-node ng-include=' \'kits.html\' ')
+			input.form-control(ng-model='selected.title')
+			.input-group
+				input.form-control(ng-model='new')
+				span.input-group-btn
+					button.btn.btn-default(ng-click='add()') Добавить
+			pre.code {{ kits.tree | json }}
+			button.btn.btn-success(ng-click='update()') Сохранить
+		.col-md-4
+			div
+				form
+					.form-group
+						label.control-label Сопутствующие товары
+						tags-input(ng-model='current.products' display-property='name')
+							auto-complete(source='load($query)')
+
+
+
+
+
+//- .container-fluid.menutree-container
+//- 	br
+//- 	.panel.panel-default.ui-ribbon-container
+//- 		.panel-heading
+//- 			span.fa.fa-bars &nbsp;Ribbon
+//- 		.panel-body
+//- 			.row
+//- 				br
+//- 				.col-md-8
+//- 					script(type='text/ng-template', id='items_renderer.html')
+//- 						div(ui-tree-handle)
+//- 							a.btn.btn-success.btn-xs(data-nodrag, ng-click='toggle(this)')
+//- 								span.fa(ng-class="{'fa-chevron-up': collapsed, 'fa-chevron-down': !collapsed}")
+//- 							{{ item.title }}
+//- 							a.pull-right.btn.btn-danger.btn-xs(data-nodrag, ng-click='remove(this)')
+//- 								span.fa.fa-times
+//- 							a.pull-right.btn.btn-primary.btn-xs(data-nodrag, ng-click='newSubItem(this)', style='margin-right: 8px;')
+//- 								span.fa.fa-plus
+//- 							a.pull-right.btn.btn-warning.btn-xs(data-nodrag, ng-click='showForm(this)')
+//- 								span.fa.fa-chevron-right
+//- 							a.pull-right.btn.btn-info.btn-xs(data-nodrag, ng-click='editTitle(this)')
+//- 								span.fa.fa-pencil
+//- 						ol(ui-tree-nodes='options', ng-model='item.items', ng-class='{hidden: collapsed}')
+//- 							li(ng-repeat='item in item.items', ui-tree-node, ng-include=' \'items_renderer.html\' ')
+//- 					div(ui-tree='options', data-empty-place-holder-enabled='false')
+//- 						ol(ui-tree-nodes, ng-model='list')
+//- 							li(ng-repeat='item in list', ui-tree-node, ng-include=' \'items_renderer.html\' ')
+//- 					br
+//- 					input.form-control(ng-model='selectedCategory.title')
+//- 					br
+//- 					.input-group
+//- 						input.form-control(ng-model='newItem')
+//- 						span.input-group-btn
+//- 							button.btn.btn-default(ng-click='addNewItem()') Добавить
+//- 					br
+//- 					pre.code {{ list | json }}
+//- 					button.btn.btn-success(ng-click='saveSettings()') Сохранить
+//- 				.col-md-4(ng-show='productAddingFormVisible')
+//- 					div
+//- 						form
+//- 							.form-group
+//- 								label.control-label Сопутствующие товары
+//- 								tags-input(ng-model='currentCategory.products', display-property='name')
+//- 									auto-complete(source='loadProductTags($query)')
+
+
+
+//- <div class="input-group">
+//-       <input type="text" class="form-control">
+//-       <span class="input-group-btn">
+//-         <button class="btn btn-default" type="button">Go!</button>
+//-       </span>
+//-     </div>

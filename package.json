@@ -1,0 +1,42 @@
+{
+  "name": "bsound",
+  "version": "0.0.0-1",
+  "description": "bsound",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/run.js",
+    "predeploy": "cd ./public/admin && bower i && cd ../shop && bower i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piraman/bsound.git"
+  },
+  "author": "piramanx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piraman/bsound/issues"
+  },
+  "homepage": "https://github.com/piraman/bsound",
+  "devDependencies": {
+    "bower": "^1.3.9",
+    "crypto": "0.0.3",
+    "express-session": "^1.7.5",
+    "grunt": "^0.4.5",
+    "grunt-bower": "^0.13.4",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-coffee": "^0.11.1",
+    "grunt-contrib-jade": "^0.12.0",
+    "grunt-contrib-stylus": "^0.18.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-newer": "^0.7.0"
+  },
+  "subdomain": "piramanxx-bsound4",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "formidable": "^1.0.15"
+  }
+}
