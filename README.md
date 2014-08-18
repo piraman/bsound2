@@ -7,6 +7,7 @@ bsound
 а ну и надо запустить серверы базы
 для этого надо найти на компе файл mongod(.exe) и запустить его
 
+<pre>
 git clone https://github.com/piraman/bsound
 ...
 cd bsound
@@ -21,5 +22,5 @@ bower install
 cd ../../
 grunt (чтобы редактировать)
 node server.js
-
+</pre>>
 все
