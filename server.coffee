@@ -31,7 +31,7 @@ Product = mongoose.model 'Product', new mongoose.Schema
 	type: type: String, enum: ['loudspeackers', 'speackers']
 	description: title: String, short: String, full: String
 	pictures: main: String, other: [String]
-	related: [type: mongoose.Schema.Types.ObjectId, ref: 'Product']
+	related: [_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'}, name: String]
 Report = mongoose.model 'Report', new mongoose.Schema
 	title: String
 	date: Date
@@ -49,7 +49,15 @@ Category = mongoose.model 'Category', new mongoose.Schema
 
 # routes configuring
 products =
-	find: (req, res) -> Product.find (err, products) -> if err then throw err else res.json products
+	find: (req, res) ->
+		conditions = {}
+		fields = []
+		if req.query['name*']?
+			conditions.name = new RegExp "#{req.query['name*']}", 'i'
+			fields.push 'name'
+		Product.find conditions, (if fields.length then fields.join ' ' else null), (err, products) ->
+			if err then throw err
+			res.json products
 	create: (req, res) -> Product.create req.body, (err, product) -> if err then throw err else res.json product
 	read: (req, res) -> Product.findById req.params.id, (err, product) -> if err then throw err else res.json product
 	update: (req, res) -> Product.findByIdAndUpdate req.params.id, req.body, (err, product) -> if err then throw err else res.json product

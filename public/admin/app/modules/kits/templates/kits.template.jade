@@ -7,8 +7,6 @@ script(type='text/ng-template' id='kits.html')
 			span.fa.fa-times
 		a.pull-right.btn.btn-primary.btn-xs(data-nodrag ng-click='addsub(this)', style='margin-right: 8px;')
 			span.fa.fa-plus
-		a.pull-right.btn.btn-warning.btn-xs(data-nodrag ng-click='products(this)')
-			span.fa.fa-chevron-right
 		a.pull-right.btn.btn-info.btn-xs(data-nodrag ng-click='edit(this)')
 			span.fa.fa-pencil
 	ol(ui-tree-nodes='options' ng-model='kit.kits' ng-class='{hidden: collapsed}')
@@ -20,23 +18,25 @@ script(type='text/ng-template' id='kits.html')
 		h1 Комплекты
 	section.row
 		.col-md-8
-			div(ui-tree='options' data-empty-place-holder-enabled='false')
-				ol(ui-tree-nodes ng-model='kits.tree')
-					li(ng-repeat='kit in kits.tree' ui-tree-node ng-include=' \'kits.html\' ')
-			input.form-control(ng-model='selected.title')
 			.input-group
 				input.form-control(ng-model='new')
 				span.input-group-btn
 					button.btn.btn-default(ng-click='add()') Добавить
-			pre.code {{ kits.tree | json }}
-			button.btn.btn-success(ng-click='update()') Сохранить
-		.col-md-4
-			div
-				form
-					.form-group
-						label.control-label Сопутствующие товары
-						tags-input(ng-model='current.products' display-property='name')
-							auto-complete(source='load($query)')
+			br
+			div(ui-tree='options' data-empty-place-holder-enabled='false')
+				ol(ui-tree-nodes ng-model='kits.tree')
+					li(ng-repeat='kit in kits.tree' ui-tree-node ng-include=' \'kits.html\' ')
+			br
+			button.btn.btn-default(ng-click='update()') Сохранить
+		.col-md-4(ng-if='form')
+			form
+				.form-group
+					label.control-label Название комплекта
+					input.form-control(ng-model='selected.title')
+				.form-group
+					label.control-label Сопутствующие товары
+					tags-input(ng-model='selected.products' display-property='name')
+						auto-complete(source='load($query)')
 
 
 

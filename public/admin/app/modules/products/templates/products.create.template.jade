@@ -76,7 +76,7 @@ section
 			label.control-label.col-md-2 Сопутствующие товары
 			.col-md-10
 				tags-input(ng-model='product.related', display-property='name')
-					auto-complete(source='loadProductTags($query)')
+					auto-complete(source='load($query)')
 		.form-group
 			.col-md-offset-2.col-md-10
 				button.btn.btn-default(ng-click='create()') Сохранить

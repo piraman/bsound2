@@ -9,20 +9,23 @@ define ['../categories.module'], (categories) ->
 			$scope.current = null
 			$scope.selected = null
 			$scope.options = {}
+			products = Restangular.all 'products'
+			$scope.form = no
 			# fetch data
 			Restangular
-			.one 'categories'
-			.get()
-			.then (categories) -> 
-				$scope.categories = categories
+				.one 'categories'
+				.get()
+				.then (categories) -> 
+					$scope.categories = categories
 			# other stuff
 			$scope.add = -> $scope.categories.tree.push id: do guid, title: $scope.new, categories: []
 			$scope.remove = (scope) -> 	do scope.remove
-			$scope.products = (scope) -> $scope.current = scope.category
-			$scope.edit = (scope) -> $scope.selected = scope.category
+			$scope.edit = (scope) -> $scope.form = yes; $scope.selected = scope.category
 			$scope.toggle = (scope) -> do scope.toggle
-			$scope.addsub = (scope) -> scope.$modelValue.categories.push id: do guid, title: 'Название категории', categories: []
+			$scope.addsub = (scope) -> scope.$modelValue.categories.push id: do guid, title: 'Категория', categories: []
 			$scope.update = -> $scope.categories.put().then (categories) -> $state.transitionTo $state.current, {}, reload: yes, inherit: no, notify: yes
+			$scope.load = (query) -> products.getList 'name*': query
+	]
 				# promise = $http.put API_URL + '/settings', $scope.settings[0]
 				# promise.success ->
 				# 	$state.transitionTo $state.current, $stateParams,
@@ -42,43 +45,43 @@ define ['../categories.module'], (categories) ->
 			# 	$scope.settings = settings
 			# 	$scope.list = $scope.settings[0].categories
 
-			$scope.productAddingFormVisible = no
+			# $scope.productAddingFormVisible = no
 
-			$scope.addNewItem = ->
-				text = $scope.newItem
-				$scope.list.push
-					id: do guid
-					title: text
-					items: []
+			# $scope.addNewItem = ->
+			# 	text = $scope.newItem
+			# 	$scope.list.push
+			# 		id: do guid
+			# 		title: text
+			# 		items: []
 
-			$scope.currentCategory = null
-			$scope.selectedCategory = null
+			# $scope.currentCategory = null
+			# $scope.selectedCategory = null
 
-			$scope.selectedItem = {}
+			# $scope.selectedItem = {}
 
-			$scope.options = {}
+			# $scope.options = {}
 
-			$scope.remove = (scope) ->
-				do scope.remove
+			# $scope.remove = (scope) ->
+			# 	do scope.remove
 
-			$scope.showForm = (scope) ->
-				$scope.productAddingFormVisible = yes
-				$scope.currentCategory = scope.item
+			# $scope.showForm = (scope) ->
+			# 	$scope.productAddingFormVisible = yes
+			# 	$scope.currentCategory = scope.item
 
-			$scope.editTitle = (scope) ->
-				$scope.selectedCategory = scope.item
+			# $scope.editTitle = (scope) ->
+			# 	$scope.selectedCategory = scope.item
 
-			$scope.toggle = (scope) ->
-				do scope.toggle
+			# $scope.toggle = (scope) ->
+			# 	do scope.toggle
 
-			$scope.newSubItem = (scope) ->
-				nodeData = scope.$modelValue
-				nodeData.items.push
-					id: do guid
-					title: '...'
-					items: []
+			# $scope.newSubItem = (scope) ->
+			# 	nodeData = scope.$modelValue
+			# 	nodeData.items.push
+			# 		id: do guid
+			# 		title: '...'
+			# 		items: []
 
-			$scope.saveSettings = ->
+			# $scope.saveSettings = ->
 				# promise = $http.put API_URL + '/settings', $scope.settings[0]
 				# promise.success ->
 				# 	$state.transitionTo $state.current, $stateParams,
@@ -102,7 +105,7 @@ define ['../categories.module'], (categories) ->
 			# 		$state.go 'product.collection'
 
 
-	]
+	# ]
 
 
 			# $scope.list = [

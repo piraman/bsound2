@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node tests/run.js",
     "predeploy": "cd ./public/admin && bower i && cd ../shop && bower i"
   },
   "repository": {

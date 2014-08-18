@@ -1,0 +1,61 @@
+script(type='text/ng-template' id='categories.html')
+	a(ui-sref='products.categories({category: category.id})', ng-bind='category.title')
+	ul(ng-if='category.categories.length')
+		li(ng-repeat='category in category.categories' ng-include='\'categories.html\'')
+
+script(type='text/ng-template' id='kits.html')
+	a(ui-sref='products.kits({kit: kit.id})', ng-bind='kit.title')
+	ul(ng-if='kit.kits.length')
+		li(ng-repeat='kit in kit.kits' ng-include='\'kits.html\'')
+
+section
+	h4.page-header Меню
+	ul
+		li Каталог
+			ul
+				li(ng-repeat='category in categories.tree' ng-include='\'categories.html\'')
+		li Коплекты
+			ul
+				li(ng-repeat='kit in kits.tree' ng-include='\'kits.html\'')
+
+section
+	h4.page-header Поиск
+	.input-group
+		input.form-control
+		span.input-group-btn
+			button.btn.btn-default
+				i.fa.fa-search
+
+section
+	h4.page-header Видео
+
+
+section
+	h4.page-header Новости
+	.media
+		a.pull-left
+			img.media-object(src='http://dummyimage.com/64x64/ccc/000.png&text=logo')
+		.media-body
+			h4.media-heading title
+			| Cras sit amet nibh libero, in gravida nulla.
+	.media
+		a.pull-left
+			img.media-object(src='http://dummyimage.com/64x64/ccc/000.png&text=logo')
+		.media-body
+			h4.media-heading title
+			| Cras sit amet nibh libero, in gravida nulla.
+
+section
+	h4.page-header Публикации
+	.media
+		a.pull-left
+			img.media-object(src='http://dummyimage.com/64x64/ccc/000.png&text=logo')
+		.media-body
+			h4.media-heading title
+			| Cras sit amet nibh libero, in gravida nulla.
+	.media
+		a.pull-left
+			img.media-object(src='http://dummyimage.com/64x64/ccc/000.png&text=logo')
+		.media-body
+			h4.media-heading title
+			| Cras sit amet nibh libero, in gravida nulla.

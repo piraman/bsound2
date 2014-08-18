@@ -1,0 +1,23 @@
+{
+  "name": "shop",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.21",
+    "requirejs": "~2.1.14",
+    "requirejs-domready": "~2.0.1",
+    "restangular": "~1.4.0",
+    "angular-ui-router": "~0.2.10",
+    "bootstrap": "~3.2.0",
+    "font-awesome": "~4.1.0",
+    "angular-bootstrap": "~0.11.0",
+    "angular-tree-repeat": "~0.0.1"
+  }
+}

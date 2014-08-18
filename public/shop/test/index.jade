@@ -1,0 +1,934 @@
+doctype
+html(lang='en')
+	head
+		//
+			Basic Page Needs
+					================================================== 
+		meta(charset='utf-8')
+		title Trizzy
+		//
+			Mobile Specific Metas
+					================================================== 
+		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+		//
+			CSS
+					================================================== 
+		link(rel='stylesheet', href='./assets/style.css')
+		link#colors(rel='stylesheet', href='./assets/green.css')
+		//if lt IE 9
+			script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+	body.boxed
+		#wrapper
+			//
+				Top Bar
+						================================================== 
+			#top-bar
+				.container
+					//
+						Top Bar Menu 
+					.ten.columns
+						ul.top-bar-menu
+							li
+								i.fa.fa-phone
+								| (564) 123 4567
+							li
+								i.fa.fa-envelope
+								a(href='#') mail@example.com
+							li
+								.top-bar-dropdown
+									span English
+									ul.options
+										li
+											.arrow
+										li
+											a(href='#') English
+										li
+											a(href='#') Polish
+										li
+											a(href='#') Deutsch
+							li
+								.top-bar-dropdown
+									span USD
+									ul.options
+										li
+											.arrow
+										li
+											a(href='#') USD
+										li
+											a(href='#') PLN
+										li
+											a(href='#') EUR
+					//
+						Social Icons 
+					.six.columns
+						ul.social-icons
+							li
+								a.facebook(href='#')
+									i.icon-facebook
+							li
+								a.twitter(href='#')
+									i.icon-twitter
+							li
+								a.dribbble(href='#')
+									i.icon-dribbble
+							li
+								a.gplus(href='#')
+									i.icon-gplus
+							li
+								a.pinterest(href='#')
+									i.icon-pinterest
+			.clearfix
+			//
+				Header
+						================================================== 
+			.container
+				//
+					Logo 
+				.four.columns
+					#logo
+						h1
+							a(href='index.html')
+								img(src='./assets/logo.png', alt='Trizzy')
+				//
+					Additional Menu 
+				.twelve.columns
+					#additional-menu
+						ul
+							li
+								a(href='#') Shopping Cart
+							li
+								a(href='#')
+									| WishList
+									span (0)
+							li
+								a(href='#') Checkout
+							li
+								a(href='#') My Account
+				//
+					Shopping Cart 
+				.twelve.columns
+					#cart
+						//
+							Button 
+						.cart-btn
+							a.button.adc(href='#') $178.00
+						.cart-list
+							.arrow
+							.cart-amount
+								span 2 items in the shopping cart
+							ul
+								li
+									a(href='#')
+										img(src='./assets/small_product_list_08.jpg', alt='')
+									a(href='#') Converse All Star Trainers
+									span 1 x $79.00
+									.clearfix
+								li
+									a(href='#')
+										img(src='./assets/small_product_list_09.jpg', alt='')
+									a(href='#')
+										| Tommy Hilfiger
+										br
+										| Shirt Beat
+									span 1 x $99.00
+									.clearfix
+							.cart-buttons.button
+								a.view-cart(href='#')
+									span(data-hover='View Cart')
+										span View Cart
+								a.checkout(href='#')
+									span(data-hover='Checkout') Checkout
+							.clearfix
+					//
+						Search 
+					nav.top-search
+						form(action='#', method='get')
+							button
+								i.fa.fa-search
+							input.search-field(type='text', placeholder='Search', value='')
+			//
+				Navigation
+						================================================== 
+			.container
+				.sixteen.columns
+					a.menu-trigger(href='#menu')
+						i.fa.fa-bars
+						| Menu
+					nav#navigation
+						ul#responsive.menu
+							li
+								a.homepage(href='index.html') Home
+							li.dropdown
+								a.current(href='#') Shop
+								ul
+									li
+										a(href='shop-with-sidebar.html') Shop With Sidebar
+									li
+										a(href='shop-full-width.html') Shop Full Width
+									li
+										a(href='shop-categories-grid.html') Categories Grid
+									li
+										a(href='single-product-page.html') Single Product Page
+									li
+										a(href='variable-product-page.html') Variable Product Page
+									li
+										a(href='shopping-cart.html') Shopping Cart
+							li
+								a(href='#') Features
+								.mega
+									.mega-container
+										.one-column
+											ul
+												li
+													span.mega-headline Example Pages
+												li
+													a(href='contact.html') Contact
+												li
+													a(href='about.html') About Us
+												li
+													a(href='services.html') Services
+												li
+													a(href='faq.html') FAQ
+												li
+													a(href='404-page.html') 404 Page
+										.one-column
+											ul
+												li
+													span.mega-headline Featured Pages
+												li
+													a(href='index-2.html') Business Homepage
+												li
+													a(href='shop-with-sidebar.html') Default Shop
+												li
+													a(href='blog-masonry.html') Masonry Blog
+												li
+													a(href='variable-product-page.html') Variable Product
+												li
+													a(href='portfolio-dynamic-grid.html') Dynamic Grid
+										.one-column.hidden-on-mobile
+											ul
+												li
+													span.mega-headline Paragraph
+												li
+													p
+														| This
+														a(href='#') Mega Menu
+														| can handle everything. Lists, paragraphs, forms...
+										.one-fourth-column.hidden-on-mobile
+											a.img-caption.margin-reset(href='#')
+												figure
+													img(src='./assets/menu-banner-01.jpg', alt='')
+													figcaption
+														h3 Jeans
+														span Pack for Style
+										.one-fourth-column.hidden-on-mobile
+											a.img-caption.margin-reset(href='#')
+												figure
+													img(src='./assets/menu-banner-02.jpg', alt='')
+													figcaption
+														h3 Sunglasses
+														span Nail the Basics
+										.clearfix
+							li.dropdown
+								a(href='#') Shortcodes
+								ul
+									li
+										a(href='elements.html') Elements
+									li
+										a(href='typography.html') Typography
+									li
+										a(href='pricing-tables.html') Pricing Tables
+									li
+										a(href='icons.html') Icons
+							li.dropdown
+								a(href='#') Portfolio
+								ul
+									li
+										a(href='portfolio-3-columns.html') 3 Columns
+									li
+										a(href='portfolio-4-columns.html') 4 Columns
+									li
+										a(href='portfolio-dynamic-grid.html') Dynamic Grid
+									li
+										a(href='single-project.html') Single Project
+							li.dropdown
+								a(href='#') Blog
+								ul
+									li
+										a(href='blog-standard.html') Blog Standard
+									li
+										a(href='blog-masonry.html') Blog Masonry
+									li
+										a(href='blog-single-post.html') Single Post
+							li.demo-button
+								a(href='#') Get This Theme
+			//
+				Titlebar
+						================================================== 
+			section.parallax-titlebar.fullwidth-element(data-background='#000', data-opacity='0.45', data-height='160')
+				img(src='./assets/titlebar_bg_01.jpg', alt='')
+				.parallax-overlay
+				.parallax-content
+					h2
+						| Shop
+						span International Shipping
+					nav#breadcrumbs
+						ul
+							li
+								a(href='#') Home
+							li
+								a(href='#') Shop
+							li Products
+			.container
+				//
+					Sidebar
+							================================================== 
+				.four.columns
+					//
+						Categories 
+					.widget.margin-top-0
+						h3.headline Categories
+						span.line
+						.clearfix
+						ul#categories
+							li
+								a(href='#')
+									| Accessories
+									span (8)
+								ul
+									li
+										a(href='#')
+											| Hats
+											span (2)
+									li
+										a(href='#')
+											| Bags
+											span (2)
+									li
+										a(href='#')
+											| Gloves
+											span (1)
+									li
+										a(href='#')
+											| Belts
+											span (3)
+									li
+										a(href='#')
+											| Accessories
+											span (8)
+										ul
+											li
+												a(href='#')
+													| Hats
+													span (2)
+											li
+												a(href='#')
+													| Bags
+													span (2)
+											li
+												a(href='#')
+													| Gloves
+													span (1)
+											li
+												a(href='#')
+													| Belts
+													span (3)
+							li
+								a(href='#')
+									| Jewelry
+									span (12)
+								ul
+									li
+										a(href='#')
+											| Rings
+											span (3)
+									li
+										a(href='#')
+											| Necklaces
+											span (2)
+									li
+										a(href='#')
+											| Bracelets
+											span (4)
+									li
+										a(href='#')
+											| Watches
+											span (3)
+							li
+								a(href='#')
+									| Gifts
+									span (3)
+								ul
+									li
+										a(href='#')
+											| Headphones
+											span (1)
+									li
+										a(href='#')
+											| Books
+											span (2)
+									li
+										a(href='#')
+											| Gifts
+											span (3)
+										ul
+											li
+												a(href='#')
+													| Headphones
+													span (1)
+											li
+												a(href='#')
+													| Books
+													span (2)
+											li
+												a(href='#')
+													| Gifts
+													span (3)
+												ul
+													li
+														a(href='#')
+															| Headphones
+															span (1)
+													li
+														a(href='#')
+															| Books
+															span (2)
+													li
+														a(href='#')
+															| Gifts
+															span (3)
+							li
+								a(href='#')
+									| Men's Wear
+									span (14)
+								ul
+									li
+										a(href='#')
+											| Denim
+											span (3)
+									li
+										a(href='#')
+											| Shirts
+											span (4)
+									li
+										a(href='#')
+											| Jackets
+											span (2)
+									li
+										a(href='#')
+											| Suits
+											span (3)
+									li
+										a(href='#')
+											| Pants
+											span (2)
+							li
+								a(href='#')
+									| Women's Wear
+									span (20)
+								ul
+									li
+										a(href='#')
+											| Denim
+											span (2)
+									li
+										a(href='#')
+											| Skirts
+											span (3)
+									li
+										a(href='#')
+											| Dresses
+											span (5)
+									li
+										a(href='#')
+											| Shirts
+											span (4)
+									li
+										a(href='#')
+											| Jumpsuits
+											span (4)
+									li
+										a(href='#')
+											| Shoes
+											span (2)
+							li
+								a(href='#')
+									| Miscellaneous
+									span (3)
+								ul
+									li
+										a(href='#')
+											| Lamps
+											span (1)
+									li
+										a(href='#')
+											| Mugs
+											span (2)
+							li
+								a(href='#')
+									| Levels Example
+									span (7)
+								ul
+									li
+										a(href='#')
+											| Books
+											span (1)
+									li
+										a(href='#')
+											| Headphones
+											span (6)
+										ul
+											li
+												a(href='#')
+													| Open
+													span (2)
+												ul
+													li
+														a(href='#') Sennheiser
+													li
+														a(href='#') Beyerdynamic
+											li
+												a(href='#')
+													| Closed
+													span (4)
+												ul
+													li
+														a(href='#') Beyerdynamic
+													li
+														a(href='#') Denon
+													li
+														a(href='#') Sennheiser
+													li
+														a(href='#') AKG
+						.clearfix
+					//
+						Widget 
+					.widget
+						h3.headline Filter By Price
+						span.line
+						.clearfix
+						#price-range
+							.padding-range
+								#slider-range
+							label(for='amount') Price:
+							input#amount(type='text')
+							a.button.color(href='#') Filter
+						.clearfix
+				//
+					Content
+								================================================== 
+				.twelve.columns
+					//
+						Ordering 
+					select.orderby
+						option Default Sorting
+						option Sort by Popularity
+						option Sort by Newness
+				//
+					Products 
+				.twelve.columns.products
+					//
+						Product #1 
+					.four.shop.columns
+						figure.product
+							.mediaholder
+								a(href='variable-product-page.html')
+									img(alt='', src='./assets/shop_item_01.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_01_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='variable-product-page.html')
+								section
+									span.product-category Skirts
+									h5 Brown Mini Skirt
+									span.product-price $79.00
+					//
+						Product #2 
+					.four.shop.columns
+						figure.product
+							.mediaholder
+								a(href='single-product-page.html')
+									img(alt='', src='./assets/shop_item_02.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_02_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='single-product-page.html')
+								section
+									span.product-category Shoes
+									h5 Glory High Shoes 
+									span.product-price $99.00
+					//
+						Product #3 
+					.four.shop.columns
+						figure.product
+							.product-discount SALE
+							.mediaholder
+								a(href='variable-product-page.html')
+									img(alt='', src='./assets/shop_item_03.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_03_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='variable-product-page.html')
+								section
+									span.product-category Suits
+									h5 Wool Two-Piece Suit
+									span.product-price-discount
+										| $499.00
+										i $399.00
+					//
+						Product #4 
+					.four.shop.columns
+						figure.product
+							.mediaholder
+								a(href='variable-product-page.html')
+									img(alt='', src='./assets/shop_item_04.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_04_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='variable-product-page.html')
+								section
+									span.product-category Shirts
+									h5 Vintage Stripe Jumper
+									span.product-price $49.00
+					//
+						Product #5 
+					.four.shop.columns
+						figure.product
+							.mediaholder
+								a(href='single-product-page.html')
+									img(alt='', src='./assets/shop_item_05.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_05_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='single-product-page.html')
+								section
+									span.product-category Accessories
+									h5 Vintage Sunglasses
+									span.product-price $29.00
+					//
+						Product #6 
+					.four.shop.columns
+						figure.product
+							.mediaholder
+								a(href='variable-product-page.html')
+									img(alt='', src='./assets/shop_item_06.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_06_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='variable-product-page.html')
+								section
+									span.product-category Shirts
+									h5 Solid Blue Polo Shirt
+									span.product-price $29.00
+					//
+						Product #7 
+					.four.shop.columns
+						figure.product
+							.mediaholder
+								a(href='variable-product-page.html')
+									img(alt='', src='./assets/shop_item_07.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_07_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='variable-product-page.html')
+								section
+									span.product-category Shirts
+									h5 Shirt in Navy Stripe
+									span.product-price $49.00
+					//
+						Product #8 
+					.four.shop.columns
+						figure.product
+							.mediaholder
+								a(href='single-product-page.html')
+									img(alt='', src='./assets/shop_item_08.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_08_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='single-product-page.html')
+								section
+									span.product-category Bags
+									h5 Zip Based Handheld Bag
+									span.product-price $99.00
+					//
+						Product #9 
+					.four.shop.columns
+						figure.product
+							.mediaholder
+								a(href='single-product-page.html')
+									img(alt='', src='./assets/shop_item_09.jpg')
+									.cover
+										img(alt='', src='./assets/shop_item_09_hover.jpg')
+								a.product-button(href='#')
+									i.fa.fa-shopping-cart
+									| Add to Cart
+							a(href='single-product-page.html')
+								section
+									span.product-category Shirts
+									h5 Long Sleeve Check Shirt
+									span.product-price $69.00
+					.clearfix
+					//
+						Pagination 
+					.pagination-container
+						nav.pagination
+							ul
+								li
+									a.current-page(href='#') 1
+								li
+									a(href='#') 2
+								li
+									a(href='#') 3
+						nav.pagination-next-prev
+							ul
+								li
+									a.prev(href='#')
+								li
+									a.next(href='#')
+			.margin-top-15
+			//
+				Footer
+						================================================== 
+			#footer
+				//
+					Container 
+				.container
+					.four.columns
+						img.margin-top-10(src='./assets/logo-footer.png', alt='')
+						p.margin-top-15
+							| Nulla facilisis feugiat magna, ut molestie metus hendrerit vitae. Vivamus tristique lectus at varius rutrum. Integer lobortis mauris non consectetur eleifend.
+					.four.columns
+						//
+							Headline 
+						h3.headline.footer Customer Service
+						span.line
+						.clearfix
+						ul.footer-links
+							li
+								a(href='#') Order Status
+							li
+								a(href='#') Payment Methods
+							li
+								a(href='#') Delivery & Returns
+							li
+								a(href='#') Privacy Policy
+							li
+								a(href='#') Terms & Conditions
+					.four.columns
+						//
+							Headline 
+						h3.headline.footer My Account
+						span.line
+						.clearfix
+						ul.footer-links
+							li
+								a(href='#') My Account
+							li
+								a(href='#') Order History
+							li
+								a(href='#') Wish List
+					.four.columns
+						//
+							Headline 
+						h3.headline.footer Newsletter
+						span.line
+						.clearfix
+						p
+							| Sign up to receive email updates on new product announcements, gift ideas, special promotions, sales and more.
+						form(action='#', method='get')
+							button.newsletter-btn(type='submit') Join
+							input.newsletter(type='text', placeholder='mail@example.com', value='')
+				//
+					Container / End 
+			//
+				Footer / End 
+			//
+				Footer Bottom / Start 
+			#footer-bottom
+				//
+					Container 
+				.container
+					.eight.columns
+						| © Copyright 2014 by
+						a(href='#') trizzy
+						| . All Rights Reserved.
+					.eight.columns
+						ul.payment-icons
+							li
+								img(src='./assets/visa.png', alt='')
+							li
+								img(src='./assets/mastercard.png', alt='')
+							li
+								img(src='./assets/skrill.png', alt='')
+							li
+								img(src='./assets/moneybookers.png', alt='')
+							li
+								img(src='./assets/paypal.png', alt='')
+				//
+					Container / End 
+			//
+				Footer Bottom / End 
+			//
+				Back To Top Button 
+			#backtotop
+				a(href='#')
+		//
+			Java Script
+					================================================== 
+		script(src='http://code.jquery.com/jquery-1.11.0.min.js')
+		script(src='http://code.jquery.com/jquery-migrate-1.2.1.min.js')
+		script(src='./assets/jquery.jpanelmenu.js')
+		script(src='./assets/jquery.themepunch.plugins.min.js')
+		script(src='./assets/jquery.themepunch.revolution.min.js')
+		script(src='./assets/jquery.themepunch.showbizpro.min.js')
+		script(src='./assets/jquery.magnific-popup.min.js')
+		script(src='./assets/hoverIntent.js')
+		script(src='./assets/superfish.js')
+		script(src='./assets/jquery.pureparallax.js')
+		script(src='./assets/jquery.pricefilter.js')
+		script(src='./assets/jquery.selectric.min.js')
+		script(src='./assets/jquery.royalslider.min.js')
+		script(src='./assets/SelectBox.js')
+		script(src='./assets/modernizr.custom.js')
+		script(src='./assets/waypoints.min.js')
+		script(src='./assets/jquery.flexslider-min.js')
+		script(src='./assets/jquery.counterup.min.js')
+		script(src='./assets/jquery.tooltips.min.js')
+		script(src='./assets/jquery.isotope.min.js')
+		script(src='./assets/puregrid.js')
+		script(src='./assets/stacktable.js')
+		script(src='./assets/custom.js')
+		//
+			Style Switcher
+					================================================== 
+		script(src='scripts/switcher.js')
+		#style-switcher
+			h2
+				| Style Switcher
+				a(href='#')
+			div
+				h3 Predefined Colors
+				ul#color1.colors
+					li
+						a.green(href='#', title='Green')
+					li
+						a.blue(href='#', title='Blue')
+					li
+						a.orange(href='#', title='Orange')
+					li
+						a.navy(href='#', title='Navy')
+					li
+						a.yellow(href='#', title='Yellow')
+					li
+						a.peach(href='#', title='Peach')
+					li
+						a.beige(href='#', title='Beige')
+					li
+						a.purple(href='#', title='Purple')
+					li
+						a.celadon(href='#', title='Celadon')
+					li
+						a.pink(href='#', title='Pink')
+					li
+						a.red(href='#', title='Red')
+					li
+						a.brown(href='#', title='Brown')
+					li
+						a.cherry(href='#', title='Cherry')
+					li
+						a.cyan(href='#', title='Cyan')
+					li
+						a.gray(href='#', title='Gray')
+					li
+						a.darkcol(href='#', title='Dark')
+				h3 Layout Style
+				.layout-style
+					select#layout-style
+						option(value='1') Boxed
+						option(value='2') Wide
+				h3 Background Image
+				ul#bg.colors.bg
+					li
+						a.bg1(href='#')
+					li
+						a.bg2(href='#')
+					li
+						a.bg3(href='#')
+					li
+						a.bg4(href='#')
+					li
+						a.bg5(href='#')
+					li
+						a.bg6(href='#')
+					li
+						a.bg7(href='#')
+					li
+						a.bg8(href='#')
+					li
+						a.bg9(href='#')
+					li
+						a.bg10(href='#')
+					li
+						a.bg11(href='#')
+					li
+						a.bg12(href='#')
+					li
+						a.bg13(href='#')
+					li
+						a.bg14(href='#')
+					li
+						a.bg15(href='#')
+					li
+						a.bg16(href='#')
+				h3 Background Color
+				ul#bgsolid.colors.bgsolid
+					li
+						a.green-bg(href='#', title='Green')
+					li
+						a.blue-bg(href='#', title='Blue')
+					li
+						a.orange-bg(href='#', title='Orange')
+					li
+						a.navy-bg(href='#', title='Navy')
+					li
+						a.yellow-bg(href='#', title='Yellow')
+					li
+						a.peach-bg(href='#', title='Peach')
+					li
+						a.beige-bg(href='#', title='Beige')
+					li
+						a.purple-bg(href='#', title='Purple')
+					li
+						a.red-bg(href='#', title='Red')
+					li
+						a.pink-bg(href='#', title='Pink')
+					li
+						a.celadon-bg(href='#', title='Celadon')
+					li
+						a.brown-bg(href='#', title='Brown')
+					li
+						a.cherry-bg(href='#', title='Cherry')
+					li
+						a.cyan-bg(href='#', title='Cyan')
+					li
+						a.gray-bg(href='#', title='Gray')
+					li
+						a.dark-bg(href='#', title='Dark')
+			#reset
+				a.button.color(href='#') Reset

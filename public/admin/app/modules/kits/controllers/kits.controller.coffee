@@ -9,6 +9,8 @@ define ['../kits.module'], (kits) ->
 			$scope.current = null
 			$scope.selected = null
 			$scope.options = {}
+			products = Restangular.all 'products'
+			$scope.form = no
 			# fetch data
 			Restangular
 			.one 'kits'
@@ -18,11 +20,13 @@ define ['../kits.module'], (kits) ->
 			# other stuff
 			$scope.add = -> $scope.kits.tree.push id: do guid, title: $scope.new, kits: []
 			$scope.remove = (scope) -> 	do scope.remove
-			$scope.products = (scope) -> $scope.current = scope.kit
-			$scope.edit = (scope) -> $scope.selected = scope.kit
+			$scope.edit = (scope) -> $scope.form = yes; $scope.selected = scope.kit
 			$scope.toggle = (scope) -> do scope.toggle
-			$scope.addsub = (scope) -> scope.$modelValue.kits.push id: do guid, title: 'Название комплекта', kits: []
+			$scope.addsub = (scope) -> scope.$modelValue.kits.push id: do guid, title: 'Комплект', kits: []
 			$scope.update = -> $scope.kits.put().then (kits) -> $state.transitionTo $state.current, {}, reload: yes, inherit: no, notify: yes
+			$scope.load = (query) -> products.getList 'name*': query
+	]
+
 				# promise = $http.put API_URL + '/settings', $scope.settings[0]
 				# promise.success ->
 				# 	$state.transitionTo $state.current, $stateParams,
@@ -42,67 +46,67 @@ define ['../kits.module'], (kits) ->
 			# 	$scope.settings = settings
 			# 	$scope.list = $scope.settings[0].kits
 
-			$scope.productAddingFormVisible = no
+	# 		$scope.productAddingFormVisible = no
 
-			$scope.addNewItem = ->
-				text = $scope.newItem
-				$scope.list.push
-					id: do guid
-					title: text
-					items: []
+	# 		$scope.addNewItem = ->
+	# 			text = $scope.newItem
+	# 			$scope.list.push
+	# 				id: do guid
+	# 				title: text
+	# 				items: []
 
-			$scope.currentCategory = null
-			$scope.selectedCategory = null
+	# 		$scope.currentCategory = null
+	# 		$scope.selectedCategory = null
 
-			$scope.selectedItem = {}
+	# 		$scope.selectedItem = {}
 
-			$scope.options = {}
+	# 		$scope.options = {}
 
-			$scope.remove = (scope) ->
-				do scope.remove
+	# 		$scope.remove = (scope) ->
+	# 			do scope.remove
 
-			$scope.showForm = (scope) ->
-				$scope.productAddingFormVisible = yes
-				$scope.currentCategory = scope.item
+	# 		$scope.showForm = (scope) ->
+	# 			$scope.productAddingFormVisible = yes
+	# 			$scope.currentCategory = scope.item
 
-			$scope.editTitle = (scope) ->
-				$scope.selectedCategory = scope.item
+	# 		$scope.editTitle = (scope) ->
+	# 			$scope.selectedCategory = scope.item
 
-			$scope.toggle = (scope) ->
-				do scope.toggle
+	# 		$scope.toggle = (scope) ->
+	# 			do scope.toggle
 
-			$scope.newSubItem = (scope) ->
-				nodeData = scope.$modelValue
-				nodeData.items.push
-					id: do guid
-					title: '...'
-					items: []
+	# 		$scope.newSubItem = (scope) ->
+	# 			nodeData = scope.$modelValue
+	# 			nodeData.items.push
+	# 				id: do guid
+	# 				title: '...'
+	# 				items: []
 
-			$scope.saveSettings = ->
-				# promise = $http.put API_URL + '/settings', $scope.settings[0]
-				# promise.success ->
-				# 	$state.transitionTo $state.current, $stateParams,
-				# 		reload: true
-				# 		inherit: false
-				# 		notify: true
-
-
-
-				# 	do $state.reload
-				# 	console.log $state
-				# 	$state.go 'menutree'
-				# promise.then (settings) ->
-				# 	console.log settings
-				# 	$scope.settings = [settings]
-				# 	$scope.list = $scope.settings[0].menutree
-
-			# $scope.saveDocument = ->
-			# 	promise = do $scope.product.put
-			# 	promise.then ->
-			# 		$state.go 'product.collection'
+	# 		$scope.saveSettings = ->
+	# 			# promise = $http.put API_URL + '/settings', $scope.settings[0]
+	# 			# promise.success ->
+	# 			# 	$state.transitionTo $state.current, $stateParams,
+	# 			# 		reload: true
+	# 			# 		inherit: false
+	# 			# 		notify: true
 
 
-	]
+
+	# 			# 	do $state.reload
+	# 			# 	console.log $state
+	# 			# 	$state.go 'menutree'
+	# 			# promise.then (settings) ->
+	# 			# 	console.log settings
+	# 			# 	$scope.settings = [settings]
+	# 			# 	$scope.list = $scope.settings[0].menutree
+
+	# 		# $scope.saveDocument = ->
+	# 		# 	promise = do $scope.product.put
+	# 		# 	promise.then ->
+	# 		# 		$state.go 'product.collection'
+
+
+	# ]
 
 
 			# $scope.list = [

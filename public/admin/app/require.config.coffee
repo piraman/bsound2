@@ -11,11 +11,11 @@ window.guid = ->
 require.config
 	paths:
 		# ngupload: './bower_components/ngUpload/ng-upload'
-		uitree: './../bower_components/angular-ui-tree/dist/angular-ui-tree.min'
-		angular: './../bower_components/angular/angular.min'
+		uitree: './../bower_components/angular-ui-tree/dist/angular-ui-tree'
+		angular: './../bower_components/angular/angular'
 		domready: './../bower_components/requirejs-domready/domReady'
 		lodash: './../bower_components/lodash/dist/lodash.compat'
-		ngtagsinput: './../bower_components/ng-tags-input/ng-tags-input.min'
+		ngtagsinput: './../bower_components/ng-tags-input/ng-tags-input'
 		restangular: './../bower_components/restangular/dist/restangular'
 		textangular: './../bower_components/textAngular/dist/textAngular.min'
 		textangularsanitize: './../bower_components/textAngular/dist/textAngular-sanitize.min'

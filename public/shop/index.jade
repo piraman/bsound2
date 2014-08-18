@@ -1,0 +1,74 @@
+doctype html
+html
+	head
+		title bsound.bro
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+		link(rel='stylesheet', type='text/css', href='./bower_components/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='./bower_components/font-awesome/css/font-awesome.min.css')
+		link(rel='stylesheet', type='text/css', href='./index.css')
+	body
+		.headbar-container(ng-include='\'./app/modules/headbar/templates/headbar.template.html\'')
+		.container
+			.row
+				.col-md-3.sidebar-container(ng-include='\'./app/modules/sidebar/templates/sidebar.template.html\'', ng-controller='SidebarController')
+				.col-md-9.view-container(ui-view)
+			//- .row
+			//- 	.col-md-12.footer-container(ng-include='\'./app/modules/footer/templates/footer.template.html\'')
+		script(type='text/javascript', src='./bower_components/requirejs/require.js', data-main='./app/require.config')
+
+
+
+
+
+
+		//- link(rel='shortcut icon', href='../shop/assets/img/favicon.png')
+		//- link(rel='stylesheet', href='./assets/style.css')
+		//- link(rel='stylesheet', href='./assets/green.css')
+		//- link(rel='stylesheet', type='text/css', href='index.css')
+		//- link(rel='stylesheet', type='text/css', href='app/modules/headbar/templates/headbar.template.css')
+		//- link(rel='stylesheet', type='text/css', href='app/modules/footer/templates/footer.template.css')
+		//- link(rel='stylesheet', type='text/css', href='app/modules/sidebar/templates/sidebar.css')
+	//- body.boxed
+	//- 	#wrapper.app-container
+	//- 		.headbar-container(ng-include='\'./app/modules/headbar/templates/headbar.template.html\'')
+	//- 		.menu-view-container.container
+	//- 			.menu-container.four.columns(ng-include='\'./app/modules/sidebar/templates/sidebar.template.html\'')
+	//- 			.view-container.twelve.columns.products(ui-view='ui-view')
+	//- 		div(ng-include='\'./app/modules/footer/templates/footer.template.html\'')
+	//- 	script(type='text/javascript', src='./bower_components/requirejs/require.js', data-main='./app/require.config')
+
+
+
+
+
+
+
+
+
+
+//- doctype html
+//- html
+//- 	head
+//- 		title Bsound
+//- 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+
+//- 		//- link(rel="stylesheet", type="text/css", href="./index.css")
+//- 		link(rel='stylesheet', href='./assets/style.css')
+//- 		link(rel='stylesheet', href='./assets/green.css')
+//- 		style
+//- 			|.visible {
+//- 			|	display: block !important;
+//- 			|}
+//- 		//- script#item-renderer(type='text/ng-template')
+//- 		//- 	a(href='#') {{item.title}}
+//- 		//- 		span ({{item.items.length}})
+//- 		//- 	ul(style='display: block;', ng-if='item.ite')
+//- 		//- 		li(ng-repeat='item in item.items', ng-include='\'item-renderer\'')
+//- 	body.boxed
+//- 		//- .signin-container(ng-include='\'./app/modules/signin/templates/signin.template.html\'')
+//- 		.app-container#wrapper
+//- 			.headbar-container(ng-include='\'./app/modules/headbar/templates/headbar.template.html\'')
+//- 			.menu-view-container.container
+//- 				.menu-container.four.columns(ng-include='\'./app/modules/menu/templates/menu.template.html\'')
+//- 				.view-container.twelve.columns.products(ui-view)
+//- 		script(type='text/javascript', src='./bower_components/requirejs/require.js', data-main='./app/require.config')

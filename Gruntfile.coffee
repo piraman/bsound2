@@ -42,7 +42,7 @@ module.exports = (grunt) ->
 		watch:
 			options:
 				livereload:
-					port: 10101
+					port: 10200
 			jade:
 				files: [
 					'public/**/*.jade'

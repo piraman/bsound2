@@ -1,0 +1,21 @@
+.four.shop.columns(ng-repeat='product in products')
+	figure.product
+			.product-discount(ng-if='product.discount != null') {{product.discount}}%
+			.mediaholder
+				a(ui-sref='product.document({product: product._id})', href='#')
+					img(ng-src='{{baseurl()}}/uploads/{{product.pictures.main.name}}')
+					.cover
+						img(ng-src='{{baseurl()}}/uploads/{{product.pictures.main.name}}')
+				a.product-button(href='#')
+					i.fa.fa-shopping-cart
+					| Add to Cart
+			a(href='#')
+				section
+					span.product-category {{product.name}}
+					h5 {{product.info}}
+					div(ng-switch='product.discount != null')
+						span.product-price-discount(ng-switch-when='true')
+							| {{product.cost}} р.
+							i {{product.cost - ((product.cost / 100) * product.discount)}} р.
+						span.product-price(ng-switch-when='false') {{product.cost}} р.
+	.clearfix
