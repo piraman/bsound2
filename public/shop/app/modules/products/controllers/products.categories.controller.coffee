@@ -10,9 +10,11 @@ define ['../products.module'], (products) ->
 				.one 'categories'
 				.get()
 				.then (categories) ->
+					populateProducts = (category) ->
+						
 					walk = (tree) ->
 						for value, i in tree
-							if value.id is $stateParams.category then $scope.category = value
+							if value.id is $stateParams.category then populateProducts value
 							else walk value.categories
 					walk categories.tree
 

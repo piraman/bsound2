@@ -1,54 +1,25 @@
 bsound
 
-<pre>
-	api/
-		auth.coffee
-			- users model
-			- signup controller
-			- login controller
-		products.coffee
-			- products model
-			- crudl controllers
-			- upload pictures controllers
-		index.coffee
-			- concat all files in one variable
-		articles.coffee
-			- articles model
-			- crudl controllers
-		newsletters.coffee
-			- newsletters model
-			- crudl controllers
-		videos.coffee
-			- videos model
-			- crudl controllers
-		pages.coffee
-			- pages model
-			- crudl controllers
-		complects.coffee
-			- complects model
-			- crudle controllers
-		settings? redis?
-			- menutree controllers
-			- currency controllers
-			- admin controllers
-			- slider controllers
-	public/
-		shop/
-		admin/
-			- products module
-				- products
-				- product
-				- create
-			- menutree module
-			- settings module
-			- auth module
-			- articles module
-			- newsletters module
-			- videos module
-			- pages module
-				- banners
-				- static pages
-			- complects module
-	server.coffee
-	config.coffee
-</pre>
+чтобы запустить добжны стоять на компе node.js и mongodb
+к тому же должны быть установлниы глобыльно следующие модули
+- npm install grunt-cli -g
+- npm install bower -g
+а ну и надо запустить серверы базы
+для этого надо найти на компе файл mongod(.exe) и запустить его
+
+git clone https://github.com/piraman/bsound
+...
+cd bsound
+npm install
+...
+cd public/admin
+bower install
+...
+cd ../shop
+bower install
+...
+cd ../../
+grunt (чтобы редактировать)
+node server.js
+
+все
