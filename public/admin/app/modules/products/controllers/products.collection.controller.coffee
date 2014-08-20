@@ -1,21 +1,22 @@
 define ['../products.module'], (products) ->
-	'use strict'
+
 	products.controller 'ProductCollectionController', [
 		'$scope'
 		'$state'
 		'Restangular'
 		($scope, $state, Restangular) ->
+
 			$scope.pagination = max: 5, total: null, pages: null, current: null
 			$scope.selected = null
 			$scope.products = []
 
 			Restangular
-			.all 'products'
-			.getList()
-			.then (products) ->
-				products.meta = fields: ['name'], fieldnames: ['Нименование']
-				$scope.products = products
-			, (err) -> throw err
+				.all 'products'
+				.getList()
+				.then (products) ->
+
+					products.meta = fields: ['name'], fieldnames: ['Нименование']
+					$scope.products = products
 
 			$scope.create = -> $state.go 'products.create'
 			$scope.read = (index) -> $state.go 'products.document', id: $scope.products[index]._id

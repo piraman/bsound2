@@ -10,7 +10,8 @@
 .row
 	.col-md-4(ng-repeat='product in category.products')
 		.thumbnail
-			img(src='http://dummyimage.com/250x200/ccc/000.png&text=logo')
+			a(ui-sref='products.document({product: product._id})')
+				img(ng-src='{{base}}/pictures/{{product.pictures.main}}')
 			.caption
 				h3(ng-bind='product.name')
 				p(ng-bind='product.info')

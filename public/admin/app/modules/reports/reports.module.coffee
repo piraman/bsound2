@@ -26,15 +26,15 @@ define [
 				url: '/reports'
 			.state 'reports.collection',
 				templateUrl: './app/modules/reports/templates/reports.collection.template.html'
-				controller: 'ReportCollectionController'
+				controller: 'ReportsCollectionController'
 				url: ''
 			.state 'reports.document',
 				templateUrl: './app/modules/reports/templates/reports.document.template.html'
-				controller: 'ReportDocumentController'
-				url: '/{id:[0-9a-z]{24,24}}'
+				controller: 'ReportsDocumentController'
+				url: '/{report:[0-9a-z]{24,24}}'
 			.state 'reports.create',
 				templateUrl: './app/modules/reports/templates/reports.create.template.html'
-				controller: 'ReportCreateController'
+				controller: 'ReportsCreateController'
 				url: '/create'
 	]
 	return reports

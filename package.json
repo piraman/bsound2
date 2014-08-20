@@ -1,11 +1,10 @@
 {
-  "name": "bsound",
-  "version": "0.0.0-1",
+  "name": "nodeapps-helloworld",
+  "version": "0.2.2-35",
   "description": "bsound",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "predeploy": "cd ./public/admin && bower i && cd ../shop && bower i"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,10 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-newer": "^0.7.0"
   },
-  "subdomain": "piramanxx-bsound4",
+  "subdomain": "bsound-helloworld",
+  "domains": [
+    "bsound.pro"
+  ],
   "engines": {
     "node": "0.10.x"
   },

@@ -50,10 +50,39 @@ section
 		.form-group
 			label.control-label.col-md-2 Тип продукта
 			.col-md-10
-				select.form-control(ng-model='product.type')
+				select.form-control(ng-model='product.type', ng-change='productTypeSwitch()')
 					option
 					option(value='loudspeackers') Сабвуферы
 					option(value='speackers') Акустические системы
+					option(value='wirelesssystems') Радиомикрофонные системы
+					option(value='volumecontrolsselectorswallpanels') Регуляторы громкости, селекторы, настенные панели
+					option(value='videocamerainternalip') видеокамеры внутренние ip
+					option(value='videocamerastreetip') видеокамеры уличные ip
+					option(value='transformer') Трансформаторы
+					option(value='streetanalogvideocamera') видеокамеры уличные аналоговые
+					option(value='signalsources') Источники сигналов
+					option(value='preamplifiers') Предусилители
+					option(value='poweramplifier') Усилители мощности
+					option(value='passivespeackers') Пассивные акустические системы
+					option(value='passivemixerpults') Пассивные микшерные пульты
+					option(value='passiveloudspeackers') Пассивные сабвуферы
+					option(value='networkvideorecorders') Сетевые видеорегистраторы
+					option(value='mixersamplifiers') Микшеры-усилители
+					option(value='microphones') Микрофоны
+					option(value='lowimpedanceamplifier') Усилители низкоомные
+					option(value='internalanalogmideocamera') Видеокамеры внутренние аналоговые
+					option(value='hybridvideorecorders') Гибридные видеорегистраторы
+					option(value='feedbacksuppressor') Подавительи обратной связи
+					option(value='equalizers') Эквалайзеры
+					option(value='effectsprocessors') Процессоры эффектов
+					option(value='dynamicprocessingdevices') Приборы динамической обработки
+					option(value='controllersspeackers') Контроллеры акустических систем
+					option(value='analogvideorecorder') Аналоговые видеорегистраторы
+					option(value='amplifier100') Усилители для 100V
+					option(value='activespeackers') Активные акустические системы
+					option(value='activemixerpults') Активные микшерные пульты
+					option(value='activeloudspeackers') Активные сабвуферы
+
 		.form-group
 			label.control-label.col-md-2 Технические характеристики
 			.col-md-10

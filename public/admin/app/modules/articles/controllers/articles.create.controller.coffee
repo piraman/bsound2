@@ -1,19 +1,18 @@
 define ['../articles.module'], (articles) ->
-	'use strict'
-	articles.controller 'ArticleCreateController', [
+
+	articles.controller 'ArticlesCreateController', [
 		'$scope'
 		'$state'
 		'Restangular'
 		($scope, $state, Restangular) ->
-			# common init
+
 			$scope.article = {}
+
 			$scope.create = ->
 				Restangular
-				.all 'articles'
-				.post $scope.article
-				.then (article) ->
-					$state.go 'articles.collection'
-				, (err) -> throw err
+					.all 'articles'
+					.post $scope.article
+					.then (article) -> $state.go 'articles.collection'
 	]
 			# saveDocument = ->
 			# 	promise = articles.post $scope.article

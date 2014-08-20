@@ -22,5 +22,5 @@ bower install
 cd ../../
 grunt (чтобы редактировать)
 node server.js
-</pre>>
+</pre>
 все

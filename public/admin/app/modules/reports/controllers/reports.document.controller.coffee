@@ -1,23 +1,20 @@
 define ['../reports.module'], (reports) ->
-	'use strict'
-	reports.controller 'ReportDocumentController', [
+
+	reports.controller 'ReportsDocumentController', [
 		'$scope'
 		'$state'
 		'$stateParams'
 		'Restangular'
 		($scope, $state, $stateParams, Restangular) ->
+
 			$scope.report = {}
+			$scope.id = $stateParams.report
 
 			Restangular
-			.one 'reports', $stateParams.id
-			.get()
-			.then (report) ->
-				$scope.report = report
-			, (err) -> throw err
-			
-			$scope.update = ->
-				$scope.report.put().then (report) ->
-					$state.go 'reports.collection'
+				.one 'reports', $stateParams.report
+				.get().then (report) -> $scope.report = report
+
+			$scope.update = -> $scope.report.put().then (report) -> $state.go 'reports.collection'
 	]
 
 

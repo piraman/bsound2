@@ -26,15 +26,15 @@ define [
 				url: '/articles'
 			.state 'articles.collection',
 				templateUrl: './app/modules/articles/templates/articles.collection.template.html'
-				controller: 'ArticleCollectionController'
+				controller: 'ArticlesCollectionController'
 				url: ''
 			.state 'articles.document',
 				templateUrl: './app/modules/articles/templates/articles.document.template.html'
-				controller: 'ArticleDocumentController'
-				url: '/{id:[0-9a-z]{24,24}}'
+				controller: 'ArticlesDocumentController'
+				url: '/{article:[0-9a-z]{24,24}}'
 			.state 'articles.create',
 				templateUrl: './app/modules/articles/templates/articles.create.template.html'
-				controller: 'ArticleCreateController'
+				controller: 'ArticlesCreateController'
 				url: '/create'
 	]
 	return articles

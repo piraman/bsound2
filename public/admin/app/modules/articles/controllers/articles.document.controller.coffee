@@ -1,23 +1,20 @@
 define ['../articles.module'], (articles) ->
-	'use strict'
-	articles.controller 'ArticleDocumentController', [
+
+	articles.controller 'ArticlesDocumentController', [
 		'$scope'
 		'$state'
 		'$stateParams'
 		'Restangular'
 		($scope, $state, $stateParams, Restangular) ->
+
 			$scope.article = {}
+			$scope.id = $stateParams.article
 
 			Restangular
-			.one 'articles', $stateParams.id
-			.get()
-			.then (article) ->
-				$scope.article = article
-			, (err) -> throw err
-			
-			$scope.update = ->
-				$scope.article.put().then (article) ->
-					$state.go 'articles.collection'
+				.one 'articles', $stateParams.article
+				.get().then (article) -> $scope.article = article
+
+			$scope.update = -> $scope.article.put().then (article) -> $state.go 'articles.collection'
 	]
 
 

@@ -6,13 +6,13 @@ require.config
 		# uitree: './../bower_components/angular-ui-tree/dist/angular-ui-tree.min'
 		angular: './../bower_components/angular/angular.min'
 		domready: './../bower_components/requirejs-domready/domReady'
-		lodash: './../bower_components/lodash/dist/lodash.compat'
+		lodash: './../bower_components/lodash/dist/lodash.compat.min'
 		# ngtagsinput: './../bower_components/ng-tags-input/ng-tags-input.min'
-		restangular: './../bower_components/restangular/dist/restangular'
+		restangular: './../bower_components/restangular/dist/restangular.min'
 		# textangular: './../bower_components/textAngular/dist/textAngular.min'
 		# textangularsanitize: './../bower_components/textAngular/dist/textAngular-sanitize.min'
 		uibootstrap: './../bower_components/angular-bootstrap/ui-bootstrap-tpls.min'
-		uirouter: './../bower_components/angular-ui-router/release/angular-ui-router'
+		uirouter: './../bower_components/angular-ui-router/release/angular-ui-router.min'
 	shim:
 		# ngupload: ['angular']
 		# uitree: ['angular']

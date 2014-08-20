@@ -1,65 +1,118 @@
-.container
-	.six.columns
-		img(ng-src='{{baseurl()}}/uploads/{{product.pictures.main.name}}')
-	.six.columns
-		.product-page
-			section.title(ng-switch='product.discount != null')
-				h2 {{product.name}}
-				span.product-price-discount(ng-switch-when='true')
-					| {{product.cost}} p.
-					i {{product.cost - ((product.cost / 100) * product.discount)}} p.
-				span.product-price(ng-switch-when='false') {{product.cost}} p.
-			section
-				p.margin-reset(ng-bind-html='product.overviewSafe')
-				.clearfix
-			section.linking
-				//- form(action='http://vasterad.com/themes/trizzy/variable-product-page.html#')
-				//- 	.qtyminus
-				//- 	input.qty(type='text', name='quantity', value='1')
-				//- 	.qtyplus
-				a.button.adc(href='http://vasterad.com/themes/trizzy/variable-product-page.html#') Добавить в корзину
-				.clearfix
-.container.margin-top-5
-	.twelve.columns
-		h3.headline Описание
-		span.line.margin-bottom-0
-	.twelve.columns(ng-switch='showFull')
-		p(ng-bind-html='product.description.shortSafe', ng-switch-when='false')
-		p(ng-bind-html='product.description.fullSafe', ng-switch-when='true')
-		a.button(ng-click='toggleShowFull()') Открыть/Скрыть
-.container.margin-top-5
-	.twelve.columns
-		h3.headline Технические характеристики
-		span.line.margin-bottom-0
-	.twelve.columns
-		table.basic-table
+.row
+	.col-md-6
+		.thumbnail
+			img(ng-src='{{product.safe.pictures.main}}')
+	.col-md-6
+		h3(ng-bind='product.name')
+		p(ng-bind='product.info')
+		p(ng-bind-html='product.safe.overview')
+		p(ng-bind='product.cost - ((product.cost / 100) * product.discount)')
+		button(ng-click='addProductToBasket()') Добавить в корзину
+
+.row
+	.col-md-12
+		.page-header
+			h4 Описание
+
+		p(ng-bind-html='product.safe.description.short', ng-if='!showFull')
+		p(ng-bind-html='product.safe.description.full', ng-if='showFull')
+		abtn.btn.btn-default(ng-click='toggleShowFull()') Открыть/Скрыть
+		//- p(ng-bind-html='product.safe.description.short')
+
+.row
+	.col-md-12
+		.page-header
+			h4 Технические характеристики
+		table.table
 			tr(ng-repeat='tech in product.techs', ng-show='tech[1]')
 				th {{tech[0]}}
 				td {{tech[1]}}
-.container.margin-top-5
-	.twelve.columns
-		h3.headline Сопутствующие товары
-		span.line.margin-bottom-0
-	.twelve.columns
-		.products.container
-			.four.columns(ng-repeat='product in product.related')
-				figure.product
-						.product-discount(ng-if='product.discount != null') {{product.discount}}%
-						.mediaholder
-							a(ui-sref='product.document({product: product._id})', href='#')
-								img(ng-src='{{baseurl()}}/uploads/{{product.pictures.main.name}}')
-								.cover
-									img(ng-src='{{baseurl()}}/uploads/{{product.pictures.main.name}}')
-							a.product-button(href='#')
-								i.fa.fa-shopping-cart
-								| Add to Cart
-						a(href='#')
-							section
-								span.product-category {{product.name}}
-								h5 {{product.info}}
-								div(ng-switch='product.discount != null')
-									span.product-price-discount(ng-switch-when='true')
-										| {{product.cost}} р.
-										i {{product.cost - ((product.cost / 100) * product.discount)}} р.
-									span.product-price(ng-switch-when='false') {{product.cost}} р.
-				.clearfix
+
+.row
+	.col-md-12
+		.page-header
+			h4 Сопутствующие товары
+		.row
+			.col-md-4(ng-repeat='product in product.safe.related')
+				.thumbnail
+					a(ui-sref='products.document({product: product._id})')
+						img(ng-src='{{product.pictures.main}}')
+					.caption
+						h3(ng-bind='product.name')
+						p(ng-bind='product.info')
+						p
+							a.btn.btn-default В корзину
+
+
+
+	//- .twelve.columns(ng-switch='showFull')
+	//- 	p(ng-bind-html='product.description.shortSafe', ng-switch-when='false')
+	//- 	p(ng-bind-html='product.description.fullSafe', ng-switch-when='true')
+	//- 	a.button(ng-click='toggleShowFull()') Открыть/Скрыть
+
+
+//- .container
+//- 	.six.columns
+//- 		img(ng-src='{{baseurl()}}/uploads/{{product.pictures.main}}')
+//- 	.six.columns
+//- 		.product-page
+//- 			section.title(ng-switch='product.discount != null')
+//- 				h2 {{product.name}}
+//- 				span.product-price-discount(ng-switch-when='true')
+//- 					| {{product.cost}} p.
+//- 					i {{product.cost - ((product.cost / 100) * product.discount)}} p.
+//- 				span.product-price(ng-switch-when='false') {{product.cost}} p.
+//- 			section
+//- 				p.margin-reset(ng-bind-html='product.overviewSafe')
+//- 				.clearfix
+//- 			section.linking
+//- 				//- form(action='http://vasterad.com/themes/trizzy/variable-product-page.html#')
+//- 				//- 	.qtyminus
+//- 				//- 	input.qty(type='text', name='quantity', value='1')
+//- 				//- 	.qtyplus
+//- 				a.button.adc(href='http://vasterad.com/themes/trizzy/variable-product-page.html#') Добавить в корзину
+//- 				.clearfix
+//- .container.margin-top-5
+//- 	.twelve.columns
+//- 		h3.headline Описание
+//- 		span.line.margin-bottom-0
+//- 	.twelve.columns(ng-switch='showFull')
+//- 		p(ng-bind-html='product.description.shortSafe', ng-switch-when='false')
+//- 		p(ng-bind-html='product.description.fullSafe', ng-switch-when='true')
+//- 		a.button(ng-click='toggleShowFull()') Открыть/Скрыть
+//- .container.margin-top-5
+//- 	.twelve.columns
+//- 		h3.headline Технические характеристики
+//- 		span.line.margin-bottom-0
+//- 	.twelve.columns
+//- 		table.basic-table
+//- 			tr(ng-repeat='tech in product.techs', ng-show='tech[1]')
+//- 				th {{tech[0]}}
+//- 				td {{tech[1]}}
+//- .container.margin-top-5
+//- 	.twelve.columns
+//- 		h3.headline Сопутствующие товары
+//- 		span.line.margin-bottom-0
+//- 	.twelve.columns
+//- 		.products.container
+//- 			.four.columns(ng-repeat='product in product.related')
+//- 				figure.product
+//- 						.product-discount(ng-if='product.discount != null') {{product.discount}}%
+//- 						.mediaholder
+//- 							a(ui-sref='product.document({product: product._id})', href='#')
+//- 								img(ng-src='{{baseurl()}}/uploads/{{product.pictures.main.name}}')
+//- 								.cover
+//- 									img(ng-src='{{baseurl()}}/uploads/{{product.pictures.main.name}}')
+//- 							a.product-button(href='#')
+//- 								i.fa.fa-shopping-cart
+//- 								| Add to Cart
+//- 						a(href='#')
+//- 							section
+//- 								span.product-category {{product.name}}
+//- 								h5 {{product.info}}
+//- 								div(ng-switch='product.discount != null')
+//- 									span.product-price-discount(ng-switch-when='true')
+//- 										| {{product.cost}} р.
+//- 										i {{product.cost - ((product.cost / 100) * product.discount)}} р.
+//- 									span.product-price(ng-switch-when='false') {{product.cost}} р.
+//- 				.clearfix

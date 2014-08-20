@@ -1,24 +1,39 @@
 define ['../products.module'], (products) ->
-	'use strict'
+
 	products.controller 'ProductsCategoriesController', [
 		'$scope'
 		'$state'
 		'$stateParams'
 		'Restangular'
 		($scope, $state, $stateParams, Restangular) ->
+
+			$scope.base = location.origin
+
 			Restangular
 				.one 'categories'
 				.get()
 				.then (categories) ->
+
 					populateProducts = (category) ->
-						
+
+						ids = []
+						for value, i in category.products then ids.push value._id
+						Restangular
+							.all 'products'
+							.getList ids: ids.join ','
+							.then (products) ->
+								category.products = products
+								$scope.category = category
+
 					walk = (tree) ->
+
 						for value, i in tree
 							if value.id is $stateParams.category then populateProducts value
 							else walk value.categories
-					walk categories.tree
 
+					walk categories.tree
 					# $scope.categories = categories
+				
 
 			# $scope.baseurl = -> location.origin
 			# promise = $http.get API_URL + '/settings'

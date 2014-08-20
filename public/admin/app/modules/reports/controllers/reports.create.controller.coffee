@@ -1,6 +1,6 @@
 define ['../reports.module'], (reports) ->
 	'use strict'
-	reports.controller 'ReportCreateController', [
+	reports.controller 'ReportsCreateController', [
 		'$scope'
 		'$state'
 		'Restangular'

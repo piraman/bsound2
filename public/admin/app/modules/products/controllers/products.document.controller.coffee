@@ -1,25 +1,33 @@
 define ['../products.module'], (product) ->
-	'use strict'
+
 	product.controller 'ProductDocumentController', [
 		'$scope'
 		'$state'
 		'$stateParams'
 		'Restangular'
 		($scope, $state, $stateParams, Restangular) ->
+
 			$scope.product = {}
 			$scope.id = $stateParams.id
 			products = Restangular.all 'products'
 
 			Restangular
-			.one 'products', $stateParams.id
-			.get()
-			.then (product) ->
-				$scope.product = product
+				.one 'products', $stateParams.id
+				.get()
+				.then (product) -> $scope.product = product
 			
 			$scope.load = (query) -> products.getList 'name*': query
 			$scope.update = ->
-				$scope.product.put().then (product) ->
-					$state.go 'products.collection'
+
+				if $scope.product.related.length?
+					related = []
+					for value, i in $scope.product.related then related.push value._id
+					$scope.product.related = related
+
+				$scope.product.put().then (product) -> $state.go 'products.collection'
+
+			$scope.productTypeSwitch = ->
+				$scope.product.techs = null
 	]
 
 

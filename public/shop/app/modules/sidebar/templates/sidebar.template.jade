@@ -8,54 +8,53 @@ script(type='text/ng-template' id='kits.html')
 	ul(ng-if='kit.kits.length')
 		li(ng-repeat='kit in kit.kits' ng-include='\'kits.html\'')
 
-section
-	h4.page-header Меню
-	ul
-		li Каталог
-			ul
-				li(ng-repeat='category in categories.tree' ng-include='\'categories.html\'')
-		li Коплекты
-			ul
-				li(ng-repeat='kit in kits.tree' ng-include='\'kits.html\'')
+.row
+	.col-md-12
+		.page-header
+			h4 Меню
+		ul.list-unstyled
+			li Каталог
+				ul
+					li(ng-repeat='category in categories.tree' ng-include='\'categories.html\'')
+			li Коплекты
+				ul
+					li(ng-repeat='kit in kits.tree' ng-include='\'kits.html\'')
 
-section
-	h4.page-header Поиск
-	.input-group
-		input.form-control
-		span.input-group-btn
-			button.btn.btn-default
-				i.fa.fa-search
+.row
+	.col-md-12
+		.page-header
+			h4 Поиск
+		.input-group
+			input.form-control
+			span.input-group-btn
+				button.btn.btn-default
+					i.fa.fa-search
 
-section
-	h4.page-header Видео
+.row
+	.col-md-12
+		.page-header
+			h4 Видео
+		.embed-responsive.embed-responsive-16by9
+			iframe.embed-responsive-item(src='//www.youtube.com/embed/zpOULjyy-n8?rel=0')
 
+.row
+	.col-md-12
+		.page-header
+			h4 Новости
+		.media(ng-repeat='report in reports')
+			a.pull-left
+				img.media-object(ng-src='{{report.safe.pictures.main}}')
+			.media-body
+				h4.media-heading(ng-bind='report.title')
+				span(ng-bind-html='report.safe.text')
 
-section
-	h4.page-header Новости
-	.media
-		a.pull-left
-			img.media-object(src='http://dummyimage.com/64x64/ccc/000.png&text=logo')
-		.media-body
-			h4.media-heading title
-			| Cras sit amet nibh libero, in gravida nulla.
-	.media
-		a.pull-left
-			img.media-object(src='http://dummyimage.com/64x64/ccc/000.png&text=logo')
-		.media-body
-			h4.media-heading title
-			| Cras sit amet nibh libero, in gravida nulla.
-
-section
-	h4.page-header Публикации
-	.media
-		a.pull-left
-			img.media-object(src='http://dummyimage.com/64x64/ccc/000.png&text=logo')
-		.media-body
-			h4.media-heading title
-			| Cras sit amet nibh libero, in gravida nulla.
-	.media
-		a.pull-left
-			img.media-object(src='http://dummyimage.com/64x64/ccc/000.png&text=logo')
-		.media-body
-			h4.media-heading title
-			| Cras sit amet nibh libero, in gravida nulla.
+.row
+	.col-md-12
+		.page-header
+			h4 Публикации
+		.media(ng-repeat='article in articles')
+			a.pull-left
+				img.media-object(ng-src='{{article.safe.pictures.main}}')
+			.media-body
+				h4.media-heading(ng-bind='article.title')
+				span(ng-bind-html='article.safe.text')

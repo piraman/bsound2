@@ -1,23 +1,37 @@
-define ['../products.module'], (products) ->
-	'use strict'
+define [
+	'angular'
+	'../products.module'
+], (angular, products) ->
+
 	products.controller 'ProductsDocumentController', [
 		'$scope'
-		'$http'
 		'Restangular'
 		'$state'
 		'$stateParams'
 		'$sce'
-		($scope, $http, Restangular, $state, $stateParams, $sce) ->
-			$scope.baseurl = -> location.origin
-			product = Restangular.one 'products', $stateParams.product
-			promise = do product.get
-			promise.then (product) ->
-				$scope.showFull = false
-				$scope.toggleShowFull = ->
-					$scope.showFull = !$scope.showFull
-				# product.overview = $sce.trustAsHtml product.overview
-				$scope.product = product
-				$scope.product.overviewSafe = $sce.trustAsHtml $scope.product.overview
-				$scope.product.description.shortSafe = $sce.trustAsHtml $scope.product.description.short
-				$scope.product.description.fullSafe = $sce.trustAsHtml $scope.product.description.full
+		($scope, Restangular, $state, $stateParams, $sce) ->
+
+			base = location.origin
+			$scope.showFull = no
+
+			Restangular
+				.one 'products', $stateParams.product
+				.get().then (product) ->
+
+					product.safe =
+						overview: $sce.trustAsHtml product.overview
+						description:
+							short: $sce.trustAsHtml product.description.short
+							full: $sce.trustAsHtml product.description.full
+						pictures:
+							main: "#{base}/pictures/#{product.pictures.main}"
+							other: []
+						related: []
+
+					related = angular.copy product.related
+					for value, i in related then value.pictures.main = "#{base}/pictures/#{value.pictures.main}"
+					product.safe.related = related
+					$scope.product = product
+
+			$scope.toggleShowFull = -> $scope.showFull = !$scope.showFull
 	]
