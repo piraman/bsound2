@@ -15,7 +15,7 @@
 					h5 {{product.info}}
 					div(ng-switch='product.discount != null')
 						span.product-price-discount(ng-switch-when='true')
-							| {{product.cost}} р.
-							i {{product.cost - ((product.cost / 100) * product.discount)}} р.
-						span.product-price(ng-switch-when='false') {{product.cost}} р.
+							| {{product.cost}} &#8381;
+							i {{product.cost - ((product.cost / 100) * product.discount)}} &#8381;
+						span.product-price(ng-switch-when='false') {{product.cost}} &#8381;
 	.clearfix
