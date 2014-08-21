@@ -9,7 +9,16 @@ define [
 		'$state'
 		'$stateParams'
 		'$sce'
-		($scope, Restangular, $state, $stateParams, $sce) ->
+		'US'
+		'EU'
+		'YE'
+		($scope, Restangular, $state, $stateParams, $sce, US, EU, YE) ->
+
+
+			$scope.currencies =
+				US: US
+				EU: EU
+				YE: YE
 
 			base = location.origin
 			$scope.showFull = no
@@ -27,6 +36,8 @@ define [
 							main: "#{base}/pictures/#{product.pictures.main}"
 							other: []
 						related: []
+
+					for value, i in product.pictures.other then product.safe.pictures.other.push "#{base}/pictures/#{value}"
 
 					related = angular.copy product.related
 					for value, i in related then value.pictures.main = "#{base}/pictures/#{value.pictures.main}"

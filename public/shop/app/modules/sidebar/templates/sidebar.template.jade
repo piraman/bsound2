@@ -1,11 +1,11 @@
 script(type='text/ng-template' id='categories.html')
-	a(ui-sref='products.categories({category: category.id})', ng-bind='category.title')
-	ul(ng-if='category.categories.length')
+	a(ui-sref='products.categories({category: category.id})', ng-bind='category.title', ng-click='showDropdown = !showDropdown')
+	ul(ng-if='category.categories.length && showDropdown')
 		li(ng-repeat='category in category.categories' ng-include='\'categories.html\'')
 
 script(type='text/ng-template' id='kits.html')
-	a(ui-sref='products.kits({kit: kit.id})', ng-bind='kit.title')
-	ul(ng-if='kit.kits.length')
+	a(ui-sref='products.kits({kit: kit.id})', ng-bind='kit.title', ng-click='showDropdown = !showDropdown')
+	ul(ng-if='kit.kits.length && showDropdown')
 		li(ng-repeat='kit in kit.kits' ng-include='\'kits.html\'')
 
 .row
@@ -15,10 +15,10 @@ script(type='text/ng-template' id='kits.html')
 		ul.list-unstyled
 			li Каталог
 				ul
-					li(ng-repeat='category in categories.tree' ng-include='\'categories.html\'')
+					li(ng-repeat='category in categories.tree' ng-include='\'categories.html\'', ng-init='showDropdown = false')
 			li Коплекты
 				ul
-					li(ng-repeat='kit in kits.tree' ng-include='\'kits.html\'')
+					li(ng-repeat='kit in kits.tree' ng-include='\'kits.html\'', ng-init='showDropdown = false')
 
 .row
 	.col-md-12

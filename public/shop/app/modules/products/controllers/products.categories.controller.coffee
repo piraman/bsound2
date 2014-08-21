@@ -5,9 +5,18 @@ define ['../products.module'], (products) ->
 		'$state'
 		'$stateParams'
 		'Restangular'
-		($scope, $state, $stateParams, Restangular) ->
+		'$sce'
+		'US'
+		'EU'
+		'YE'
+		($scope, $state, $stateParams, Restangular, $sce, US, EU, YE) ->
 
-			$scope.base = location.origin
+			$scope.currencies =
+				US: US
+				EU: EU
+				YE: YE
+
+			base = location.origin
 
 			Restangular
 				.one 'categories'
@@ -22,6 +31,12 @@ define ['../products.module'], (products) ->
 							.all 'products'
 							.getList ids: ids.join ','
 							.then (products) ->
+
+								for value, i in products
+									value.safe =
+										pictures:
+											main: "#{base}/pictures/#{value.pictures.main}"
+
 								category.products = products
 								$scope.category = category
 

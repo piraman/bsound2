@@ -62,6 +62,7 @@ Product = mongoose.model 'Product', new mongoose.Schema
 	]
 	description: title: String, short: String, full: String
 	pictures: main: String, other: [String]
+	files: [String]
 	related: [type: mongoose.Schema.Types.ObjectId, ref: 'Product']
 Report = mongoose.model 'Report', new mongoose.Schema
 	title: String

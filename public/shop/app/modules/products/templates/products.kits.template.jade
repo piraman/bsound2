@@ -14,11 +14,16 @@
 				.col-md-4(ng-repeat='product in kit.products')
 					.thumbnail
 						a(ui-sref='products.document({product: product._id})')
-							img(ng-src='{{base}}/pictures/{{product.pictures.main}}')
+							img(ng-src='{{product.safe.pictures.main}}')
 						.caption
 							h3(ng-bind='product.name')
 							p(ng-bind='product.info')
-							p(ng-bind='product.cost')  р.
+							p(ng-if='product.discount') {{ product.discount }}%
+							p(ng-if='product.discount')
+								span.line-through {{ (product.cost * (currencies[product.currency] || 1)).toFixed() }}
+								span  {{ ((product.cost - ((product.cost / 100) * product.discount)) * (currencies[product.currency] || 1)).toFixed() }} р.
+							p(ng-if='!product.discount') {{ (product.cost * (currencies[product.currency] || 1)).toFixed() }}
+
 .row
 	.col-md-12
 		button.btn.btn-default В корзину

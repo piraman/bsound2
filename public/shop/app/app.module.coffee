@@ -37,6 +37,9 @@ define [
 		'ui.router'
 	]
 	app.constant 'API_URL', location.origin + '/api/v1'
+	app.constant 'US', 36.2240
+	app.constant 'EU', 48.1924
+	app.constant 'YE', 30
 	app.config [
 		'$compileProvider'
 		'$stateProvider'
