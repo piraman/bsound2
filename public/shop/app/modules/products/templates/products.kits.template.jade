@@ -21,7 +21,7 @@
 							p(ng-if='product.discount') {{ product.discount }}%
 							p(ng-if='product.discount')
 								span.line-through {{ (product.cost * (currencies[product.currency] || 1)).toFixed() }}
-								span  {{ ((product.cost - ((product.cost / 100) * product.discount)) * (currencies[product.currency] || 1)).toFixed() }} р.
+								span  {{ ((product.cost - ((product.cost / 100) * product.discount)) * (currencies[product.currency] || 1)).toFixed() }} &#8381;
 							p(ng-if='!product.discount') {{ (product.cost * (currencies[product.currency] || 1)).toFixed() }}
 
 .row
